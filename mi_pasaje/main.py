@@ -1,8 +1,12 @@
 from core import library_telebot
 import telebot
 import os
-bot = telebot.TeleBot(token="7288813327:AAGmz6f2MJa-X_SP8ECLtcTwGE_naSIogU4")
 
+# bot de prueba
+bot = telebot.TeleBot(token="6636435110:AAEEbWZ9v_EhT_dDbzZvfTUX6gufLBEbVto")
+
+# bot original
+# bot = telebot.TeleBot(token="7519838417:AAEgpcGFQCbHjuVNP14i2V02Bm0Zfa0cI2A")
 
 @bot.message_handler(func=lambda message:True)
 def all_messages(message):
@@ -10,15 +14,21 @@ def all_messages(message):
                       'start': ['Registrarse',
                                 'Confirmar salida', '',
                                 'Transporte disponible para hoy ', '', '',
-                                'Ruta & Destino',
+                                'Hacia donde voy',
                                 'Ayuda del viajero'],
+                #========
+
+           'Confirmar salida': ['Confirmar para viajar',
+                                'Cancelar botella',
+                                'Atras','',
+                                ],
                 #========
                 'Registrarse': ['Registrarse como viajero',
                                 'Registrarse como Conductor',
                                 "Atras"
                                 ],
                 #========
-             'Ruta & Destino': ['Destino Habana',
+             'Hacia donde voy': ['Destino Habana',
                                 'Dentro del mismo Municipio',
                                 'Alquiler de Vehiculos',
                                 "Atras"
@@ -27,11 +37,16 @@ def all_messages(message):
                                 'Camionetas',
                                 'Guaguas',
                                 'Otros',
+                                'Volver','',
+                                ],
+                #========
+'Transporte disponible para hoy': [
+                                'Disponible en el Municipio',
+                                'Disponible en la Provincia',
                                 'Atras','',
                                 ],
 
-                #========
-                    }
+                        }
 
     MESSAGE_ID = message.chat.id
     MESSAGE    = message.text
@@ -62,19 +77,42 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
-    elif 'Ruta & Destino' == MESSAGE: # will capture text of press buttons
+    elif 'Confirmar salida' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
                     message_id=MESSAGE_ID,
-                    key_dict_buttons='Ruta & Destino',
+                    key_dict_buttons='Confirmar salida',
+                    dict_buttons=data_buttons,
+                    row_number=2,
+                    message=f"Bienvenido al menu de {MESSAGE}",
+                    # resize=True,
+                    # show_keyboard=False,
+                    )
+    elif 'Hacia donde voy' == MESSAGE or 'Volver' ==  MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+        tele_bot.tele_buttons(
+                    bot = bot,
+                    message_id=MESSAGE_ID,
+                    key_dict_buttons='Hacia donde voy',
                     dict_buttons=data_buttons,
                     row_number=1,
                     message=f"Bienvenido al menu de {MESSAGE}",
                     # resize=True,
                     # show_keyboard=False,
                     )
-
+    elif 'Transporte disponible para hoy' == MESSAGE or 'Volver' ==  MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+        tele_bot.tele_buttons(
+                    bot = bot,
+                    message_id=MESSAGE_ID,
+                    key_dict_buttons='Transporte disponible para hoy',
+                    dict_buttons=data_buttons,
+                    row_number=2,
+                    message=f"Bienvenido al menu de {MESSAGE}",
+                    # resize=True,
+                    # show_keyboard=False,
+                    )
     elif 'Destino Habana' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
@@ -115,9 +153,16 @@ def all_messages(message):
                     )
 
     # =====================================================================
+    elif '/unirse_al_grupo' == MESSAGE: # will capture text of press buttons
+        message_formated = 'Used puede compartir sus ideas y sugerencias en Nuestro grupo su grupo\n\nhttps://t.me/+DkcqyAf0vxJhNTEx'
+        tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
     elif '/califiar_app' == MESSAGE or 'califiar_app' == MESSAGE: # will capture text of press buttons
         tele_bot.congratulation( bot=bot,message_id=MESSAGE_ID,message='Formulario')
 
+    elif '/total_votos' == MESSAGE: # will capture text of press buttons
+        message_formated = f'Cantidad de votos: {"320"}\n\nVotos:\n\nPersonas que le gustan la App {"150"}\nPersonas que no les gusta: {"25"}\n\n'
+        tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
     else:
         message_formated = 'Comando desconocido por favor presione /Ayuda en caso de no saber.'
@@ -137,7 +182,9 @@ if __name__ == '__main__':
     MenuCommand = library_telebot.tele_bot.MenuCommand
     list_all_commands = {
                         'start':'Lobby de bienvenida a Mi pasaje App',
+                        'unirse_al_grupo':'Grupo creado para compartir ideas',
                         'califiar_app':'Calificame su opinion de la App',
+                        'total_votos':'Ver cantidad de votos y aceptacion de la app chofe_parada',
                         'registrarse':'Registrarse en mi pasaje App',
                         'donacion':'Puede contruir con la App',
                         'ayuda':'Ayuda del viajero',
