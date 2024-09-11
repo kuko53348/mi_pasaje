@@ -115,7 +115,7 @@ def all_messages(message):
                     )
 
     # =====================================================================
-    if '/califiar_app' == MESSAGE or 'califiar_app' == MESSAGE: # will capture text of press buttons
+    elif '/califiar_app' == MESSAGE or 'califiar_app' == MESSAGE: # will capture text of press buttons
         tele_bot.congratulation( bot=bot,message_id=MESSAGE_ID,message='Formulario')
 
 
