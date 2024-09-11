@@ -146,7 +146,7 @@ class tele_bot():
 
         data = bot.send_poll(
             chat_id=message_id,
-            question="Como califica la App",
+            question="Comparta su opinion hacerca de la App",
             options=answer_options,
             type="quiz",
             correct_option_id=0,
@@ -159,7 +159,9 @@ class tele_bot():
             # This handler can be used to log User answers and to send next poll
             polling = poll
             # 'option_ids', 'poll_id', 'to_dict', 'to_json', 'user', 'voter_chat'
-            print(polling.option_ids)
+            print(f"[+] A escogido respuesta: {polling.option_ids}")
+            print(f"[+] Usuario: @{polling.user} ID: {polling.poll_id}")
+            print(f"[+] Login: @{polling.voter_chat}")
             # print(polling['option_ids'])
 
         return True

@@ -31,7 +31,6 @@ def all_messages(message):
                                 ],
 
                 #========
-
                     }
 
     MESSAGE_ID = message.chat.id
