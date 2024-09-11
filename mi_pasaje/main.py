@@ -3,10 +3,10 @@ import telebot
 import os
 
 # bot de prueba
-bot = telebot.TeleBot(token="6636435110:AAEEbWZ9v_EhT_dDbzZvfTUX6gufLBEbVto")
+# bot = telebot.TeleBot(token="6636435110:AAEEbWZ9v_EhT_dDbzZvfTUX6gufLBEbVto")
 
 # bot original
-# bot = telebot.TeleBot(token="7519838417:AAEgpcGFQCbHjuVNP14i2V02Bm0Zfa0cI2A")
+bot = telebot.TeleBot(token="7519838417:AAEgpcGFQCbHjuVNP14i2V02Bm0Zfa0cI2A")
 
 @bot.message_handler(func=lambda message:True)
 def all_messages(message):
@@ -186,8 +186,8 @@ if __name__ == '__main__':
                         'califiar_app':'Calificame su opinion de la App',
                         'total_votos':'Ver cantidad de votos y aceptacion de la app chofe_parada',
                         'registrarse':'Registrarse en mi pasaje App',
-                        'donacion':'Puede contruir con la App',
                         'ayuda':'Ayuda del viajero',
+                        'donacion':'Puede contruir con la App',
                         }
     try:
         MenuCommand(bot,list_all_commands)
