@@ -2,8 +2,8 @@
 ## Instalation Flet-Box
 ```bash
 
->>> mkdir My_app
->>> cd My_app
+>>> mkdir mi_pasaje
+>>> cd mi_pasaje
 
 ```
 ## Run one time
@@ -17,32 +17,25 @@
 
 >>> source .venv/bin/activate
 >>> pip install --upgrade pip
->>> pip install flet
+>>> pip install telebot
 >>> pip install -r requirements.txt
 
 ```
-
 ## Install manually
 
 ```
->>> git clone https://github.com/xavier53348/Flet-Box.git
+>>> git clone https://github.com/kuko53348/mi_pasaje.git
 
 ```
-<!-- ## By pypi repo
-
-```
->>> pip install flet-box-gui
-
-``` -->
-## Easy run Flet-Box
+## Easy run mi_pasaje
 ```bash
 
 >>> python3 mi_pasaje/main.py
 
 ```
 ## Easy way run a save APP
+```bash
 
-```
 >>> flet test/proyect_name/proyect_name/main.py
 
 ```

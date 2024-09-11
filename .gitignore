@@ -2,6 +2,7 @@
 .venv/
 .git/
 __pycache__/
+create_ssh.sh
 help_git.md
 drag_drop_proyect/
 make_path.sh

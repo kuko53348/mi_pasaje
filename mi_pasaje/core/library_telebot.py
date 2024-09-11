@@ -141,24 +141,27 @@ class tele_bot():
     def congratulation(bot, message_id, message=''):
 
         # bot.send_message(message.chat.id, "You win lottery day have a nice lucky day ")
-        answer_options = [message, "Im not mod to celebrate"]
+        answer_options = ["Le gusta la App @mi_pasaje_bot","No sirve la App"]
+        print(message)
 
         data = bot.send_poll(
             chat_id=message_id,
-            question="Do you like celebrate?: ",
+            question="Como califica la App",
             options=answer_options,
             type="quiz",
             correct_option_id=0,
             is_anonymous=False,
             # is_anonymous=True,
         )
+        # print(data)
+        @bot.poll_answer_handler()
+        def handle_poll(poll):
+            # This handler can be used to log User answers and to send next poll
+            polling = poll
+            # 'option_ids', 'poll_id', 'to_dict', 'to_json', 'user', 'voter_chat'
+            print(polling.option_ids)
+            # print(polling['option_ids'])
 
-        # @bot.poll_answer_handler()
-        # def handle_poll(poll):
-        #     # This handler can be used to log User answers and to send next poll
-        #     polling = poll
-
-        #     # print(poll)
         return True
 
     def listen_message(message_id, reply_message, type_msg='message', message='', file=''):
