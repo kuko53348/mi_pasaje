@@ -159,9 +159,9 @@ class tele_bot():
             # This handler can be used to log User answers and to send next poll
             polling = poll
             # 'option_ids', 'poll_id', 'to_dict', 'to_json', 'user', 'voter_chat'
-            print(f"[+] A escogido respuesta: {polling.option_ids}")
-            print(f"[+] Usuario: @{polling.user} ID: {polling.poll_id}")
-            print(f"[+] Login: @{polling.voter_chat}")
+            print(f"[+] A escogido respuesta: {answer_options[polling.option_ids[0]]}")
+            print(f"[+] Usuario: @{polling.user.first_name} ID: {polling.poll_id}")
+            print(f"[+] Login: @{polling.user.username}")
             # print(polling['option_ids'])
 
         return True
