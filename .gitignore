@@ -1,0 +1,7 @@
+*.pyc
+.venv/
+.git/
+__pycache__/
+help_git.md
+drag_drop_proyect/
+make_path.sh
