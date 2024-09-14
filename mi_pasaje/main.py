@@ -1,39 +1,61 @@
-from core import library_telebot
 import telebot
 import os
 
+from core import library_telebot
+from core import library_lenguage
+
 # bot de prueba
-# bot = telebot.TeleBot(token="6636435110:AAEEbWZ9v_EhT_dDbzZvfTUX6gufLBEbVto")
+bot = telebot.TeleBot(token="6636435110:AAEEbWZ9v_EhT_dDbzZvfTUX6gufLBEbVto")
 
 # bot original
-bot = telebot.TeleBot(token="7519838417:AAEgpcGFQCbHjuVNP14i2V02Bm0Zfa0cI2A")
+# bot = telebot.TeleBot(token="7519838417:AAEgpcGFQCbHjuVNP14i2V02Bm0Zfa0cI2A")
 
 @bot.message_handler(func=lambda message:True)
 def all_messages(message):
     data_buttons = {
-                      'start': ['Registrarse',
-                                'Confirmar salida', '',
-                                'Transporte disponible para hoy ', '', '',
-                                'Hacia donde voy',
-                                'Ayuda del viajero'],
+                      'start': [
+                                'Viajar en mi Ciudad',
+                                'Fuera de mi Ciudad','',
+                                # 'Confirmar salida', '',
+                                # 'Bayamo',
+                                # 'Transporte disponible para hoy',
+                                'Principales dudas'],
                 #========
 
-           'Confirmar salida': ['Confirmar para viajar',
+           'Confirmar salida': [
+                                'Confirmar para viajar',
                                 'Cancelar botella',
                                 'Atras','',
                                 ],
                 #========
-                'Registrarse': ['Registrarse como viajero',
+                'Registrarse': [
+                                'Registrarse como viajero',
                                 'Registrarse como Conductor',
                                 "Atras"
                                 ],
                 #========
-             'Hacia donde voy': ['Destino Habana',
-                                'Dentro del mismo Municipio',
-                                'Alquiler de Vehiculos',
+        'Fuera de mi Ciudad': [
+                                'Viajar hacia la Habana',
+                                'Bayamo',
+                                # 'Viajar en el Municipio',
+                                # 'Bayamo',
+                                # 'Alquiler de Vehiculos',
                                 "Atras"
                                 ],
-         'Tipos de vehiculos': ['Camiones',
+        'Viajar en mi Ciudad': [
+                                'Coche-tradicional',
+                                'Coche-Guaguita',
+                                'Coche-planchero',
+                                'Bici-taxi',
+                                'Moto-taxi',
+                                'Motorina-taxi',
+                                'Automobil',
+                                'Camiones',
+                                'Camionetas',
+                                'Atras',
+                                ],
+         'Tipos de vehiculos': [
+                                'Camiones',
                                 'Camionetas',
                                 'Guaguas',
                                 'Otros',
@@ -45,6 +67,20 @@ def all_messages(message):
                                 'Disponible en la Provincia',
                                 'Atras','',
                                 ],
+                     'Bayamo': [
+                                'Bartolomé Masó',
+                                'Buey Arriba',
+                                'Campechuela',
+                                'Cauto Cristo',
+                                'Guisa',
+                                'Jiguaní',
+                                'Manzanillo',
+                                'Media Luna',
+                                'Pilón',
+                                'Río Cauto',
+                                'Yara',
+                                'Atras'
+                                ],
 
                         }
 
@@ -52,15 +88,17 @@ def all_messages(message):
     MESSAGE    = message.text
 
     # ===================================== MENU ================================
-    if '/start' ==  MESSAGE or 'Atras' ==  MESSAGE: # will capture text of press buttons
+    if '/start' ==  MESSAGE or 'Atras' ==  MESSAGE or  '/atras' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
+
+        message_formated = library_lenguage.read_header(data='NOTA')
         tele_bot.tele_buttons(
                     bot = bot,
                     message_id=MESSAGE_ID,
                     key_dict_buttons='start',
                     dict_buttons=data_buttons,
                     row_number=3,
-                    message=f"Bienvenido al lobby de mi pasaje app donde usted puede hacer sus reservaciones de transporte o simplemente tener conocimiento del transporte publico en la ciudad de Cardenas.",
+                    message=message_formated,
                     # resize=True,
                     # show_keyboard=False,
                     )
@@ -89,14 +127,14 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
-    elif 'Hacia donde voy' == MESSAGE or 'Volver' ==  MESSAGE: # will capture text of press buttons
+    elif 'Fuera de mi Ciudad' == MESSAGE or 'Volver' ==  MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
                     message_id=MESSAGE_ID,
-                    key_dict_buttons='Hacia donde voy',
+                    key_dict_buttons='Fuera de mi Ciudad',
                     dict_buttons=data_buttons,
-                    row_number=1,
+                    row_number=2,
                     message=f"Bienvenido al menu de {MESSAGE}",
                     # resize=True,
                     # show_keyboard=False,
@@ -113,7 +151,7 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
-    elif 'Destino Habana' == MESSAGE: # will capture text of press buttons
+    elif 'Viajar hacia la Habana' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
@@ -126,7 +164,7 @@ def all_messages(message):
                     # show_keyboard=False,
                     )
 
-    elif 'Dentro del mismo Municipio' == MESSAGE: # will capture text of press buttons
+    elif 'Viajar en el Municipio' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
@@ -138,7 +176,18 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
-
+    elif 'Viajar en mi Ciudad' == MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+        tele_bot.tele_buttons(
+                    bot = bot,
+                    message_id=MESSAGE_ID,
+                    key_dict_buttons='Viajar en mi Ciudad',
+                    dict_buttons=data_buttons,
+                    row_number=3,
+                    message=f"Bienvenido al menu de {MESSAGE}",
+                    # resize=True,
+                    # show_keyboard=False,
+                    )
     elif 'Alquiler de Vehiculos' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
@@ -151,10 +200,21 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
-
+    elif 'Bayamo' == MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+        tele_bot.tele_buttons(
+                    bot = bot,
+                    message_id=MESSAGE_ID,
+                    key_dict_buttons='Bayamo',
+                    dict_buttons=data_buttons,
+                    row_number=3,
+                    message=f'Bienvenido al menu de {MESSAGE}\n\nUsted puede volver a la pagina de inicio pulsando 👉<b>/atras</b> 👈',
+                    # resize=True,
+                    # show_keyboard=False,
+                    )
     # =====================================================================
     elif '/unirse_al_grupo' == MESSAGE: # will capture text of press buttons
-        message_formated = 'Used puede compartir sus ideas y sugerencias en Nuestro grupo su grupo\n\nhttps://t.me/+DkcqyAf0vxJhNTEx'
+        message_formated = library_lenguage.read_header(data='GROUP')
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
     elif '/califiar_app' == MESSAGE or 'califiar_app' == MESSAGE: # will capture text of press buttons
@@ -165,8 +225,17 @@ def all_messages(message):
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
     else:
-        message_formated = 'Comando desconocido por favor presione /Ayuda en caso de no saber.'
+        message_formated = library_lenguage.read_header(data='NOTA')
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+        # print(f"""
+        #     Telegram: @{message.json.get('from').get('username')}
+        #     ID: {message.json.get('from').get('id')}
+        #     usuario: {message.json.get('from').get('first_name')}
+        #     texto: {message.json.get('text')}
+        #     """)
+
+        # print(message.json.get('chat'))
 
     # if 'B' == MESSAGE: # will capture text of press buttons
     #     message_formated = 'hello world'
@@ -182,17 +251,18 @@ if __name__ == '__main__':
     MenuCommand = library_telebot.tele_bot.MenuCommand
     list_all_commands = {
                         'start':'Lobby de bienvenida a Mi pasaje App',
+                        'registrarse':'Registrarse como usuario o conductor',
                         'unirse_al_grupo':'Grupo creado para compartir ideas',
                         'califiar_app':'Calificame su opinion de la App',
                         'total_votos':'Ver cantidad de votos y aceptacion de la app chofe_parada',
                         'registrarse':'Registrarse en mi pasaje App',
-                        'ayuda':'Ayuda del viajero',
+                        'ayuda':'Principales dudas',
                         'donacion':'Puede contruir con la App',
                         }
     try:
         MenuCommand(bot,list_all_commands)
-        # bot.infinity_polling(skip_pending=True)
-        bot.infinity_polling()
+        bot.infinity_polling(skip_pending=True)
+        # bot.infinity_polling()
     except Exception as e:
         os.system('clear')
         line = "="*30
