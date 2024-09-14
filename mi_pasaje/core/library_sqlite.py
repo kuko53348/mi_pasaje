@@ -338,11 +338,11 @@ if __name__ == '__main__':
     #             'transaction_hash':'TEXT',
     #             }
 
-    data_price ={
-                'trx_price'     :'TEXT',
-                'matic_price'   :'TEXT',
-                'bnb_price'     :'TEXT',
-                }
+    # data_price ={
+    #             'trx_price'     :'TEXT',
+    #             'matic_price'   :'TEXT',
+    #             'bnb_price'     :'TEXT',
+    #             }
     data_write ={
                 'date_time'     :'TEXT',
                 'user_name'     :'TEXT',
@@ -367,12 +367,12 @@ if __name__ == '__main__':
                 }
 
     # open database
-    connection_db    = Instance_mysqlite_db.sqlite_connection(namedatabase=".book_user.db")
-    connection_price = Instance_mysqlite_db.sqlite_connection(namedatabase=".book_price.db")
+    # connection_db    = Instance_mysqlite_db.sqlite_connection(namedatabase=".book_user.db")
+    # connection_price = Instance_mysqlite_db.sqlite_connection(namedatabase=".book_price.db")
 
     #=========================================== creation database ===========================================
-    Instance_mysqlite_db.CreateTableDatabase(connected=connection_db,tableName="register_user",column=data_write)
-    Instance_mysqlite_db.CreateTableDatabase(connected=connection_price,tableName="coin_price",column=data_price)
+    # Instance_mysqlite_db.CreateTableDatabase(connected=connection_db,tableName="register_user",column=data_write)
+    # Instance_mysqlite_db.CreateTableDatabase(connected=connection_price,tableName="coin_price",column=data_price)
     #=========================================== find all data table
     # find_all = Instance_mysqlite_db.sqlite_find_all(connected=connection_db,tableName='book_orders')
     #=========================================== find by name

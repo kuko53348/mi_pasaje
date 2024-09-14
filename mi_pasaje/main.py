@@ -15,9 +15,10 @@ def all_messages(message):
     data_buttons = {
                       'start': [
                                 'Viajar en mi Ciudad',
-                                'Fuera de mi Ciudad','',
+                                'Vijar en mi Municipio','',
+                                # 'Vijar en mi Municipio','',
                                 # 'Confirmar salida', '',
-                                # 'Bayamo',
+                                # 'Granma',
                                 # 'Transporte disponible para hoy',
                                 'Principales dudas'],
                 #========
@@ -34,11 +35,12 @@ def all_messages(message):
                                 "Atras"
                                 ],
                 #========
-        'Fuera de mi Ciudad': [
-                                'Viajar hacia la Habana',
-                                'Bayamo',
+        'Vijar en mi Municipio': [
+                                # 'Viajar hacia la Habana',
+                                'Granma',
+                                # 'Matanzas',
                                 # 'Viajar en el Municipio',
-                                # 'Bayamo',
+                                # 'Granma',
                                 # 'Alquiler de Vehiculos',
                                 "Atras"
                                 ],
@@ -67,7 +69,8 @@ def all_messages(message):
                                 'Disponible en la Provincia',
                                 'Atras','',
                                 ],
-                     'Bayamo': [
+                     'Granma': [
+                                'Bayamo',
                                 'Bartolomé Masó',
                                 'Buey Arriba',
                                 'Campechuela',
@@ -81,7 +84,21 @@ def all_messages(message):
                                 'Yara',
                                 'Atras'
                                 ],
-
+                    'Matanzas':[
+                                'Matanzas',
+                                'Cárdenas',
+                                'Martí',
+                                'Colón',
+                                'Perico',
+                                'Jovellanos',
+                                'Pedro_Betancourt',
+                                'Limonar',
+                                'Unión_de_Reyes',
+                                'Ciénaga_de_Zapata',
+                                'Jagüey_Grande',
+                                'Calimete',
+                                'Los_Arabos',
+                                ]
                         }
 
     MESSAGE_ID = message.chat.id
@@ -127,12 +144,12 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
-    elif 'Fuera de mi Ciudad' == MESSAGE or 'Volver' ==  MESSAGE: # will capture text of press buttons
+    elif 'Vijar en mi Municipio' == MESSAGE or 'Volver' ==  MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
                     message_id=MESSAGE_ID,
-                    key_dict_buttons='Fuera de mi Ciudad',
+                    key_dict_buttons='Vijar en mi Municipio',
                     dict_buttons=data_buttons,
                     row_number=2,
                     message=f"Bienvenido al menu de {MESSAGE}",
@@ -176,7 +193,7 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
-    elif 'Viajar en mi Ciudad' == MESSAGE: # will capture text of press buttons
+    elif 'Viajar en mi Ciudad' == MESSAGE or 'Bayamo' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
@@ -200,12 +217,24 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
-    elif 'Bayamo' == MESSAGE: # will capture text of press buttons
+    elif 'Granma' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
                     message_id=MESSAGE_ID,
-                    key_dict_buttons='Bayamo',
+                    key_dict_buttons='Granma',
+                    dict_buttons=data_buttons,
+                    row_number=3,
+                    message=f'Bienvenido al menu de {MESSAGE}\n\nUsted puede volver a la pagina de inicio pulsando 👉<b>/atras</b> 👈',
+                    # resize=True,
+                    # show_keyboard=False,
+                    )
+    elif 'Matanzas' == MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+        tele_bot.tele_buttons(
+                    bot = bot,
+                    message_id=MESSAGE_ID,
+                    key_dict_buttons='Matanzas',
                     dict_buttons=data_buttons,
                     row_number=3,
                     message=f'Bienvenido al menu de {MESSAGE}\n\nUsted puede volver a la pagina de inicio pulsando 👉<b>/atras</b> 👈',
