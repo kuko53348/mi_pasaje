@@ -274,9 +274,16 @@ Usted esta punto de registrarse como un cuenta real, los datos ingresados deben 
 Registrado como:\t\t{tmp_data.get('type')}
 Nombre:\t\t{tmp_data.get('name')}
 Movil:\t\t{tmp_data.get('number')}
-Modelo de transporte:\t\t{tmp_data.get('car')}
+Modelo de transporte:\t\t/{tmp_data.get('car')}
 Capacidad de transporte:\t\t{tmp_data.get('capacity')} Clientes
 
+NOTA:
+
+Solo queda la ultima configuracion:
+
+/cual_es_mi_ruta
+
+Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
 
     """
 
@@ -316,10 +323,10 @@ def driver_name(message):
 
     print(f'show name: {tmp_message}:')
 
-    client_registered[message.chat.id]={'type':'driver'}
+    client_registered[message.chat.id]={'type':'Conductor'}
     client_registered[message.chat.id]['name']=tmp_message
 
-    message_formated = library_lenguage.read_header(data='DRIVER_CAR')
+    message_formated = library_lenguage.read_header(data='DRIVER_VEHICUL')
     bot.send_chat_action(message.chat.id, 'typing')
     var_tmp = bot.send_message(message.chat.id, message_formated)
     bot.register_next_step_handler(var_tmp,
@@ -333,36 +340,50 @@ def all_messages(message):
                       'start': [
                                 'Mi informacion', 'Actualizar Posicion','',
                                 'Viajar ahora','','',
-                                'Configuracion','Ayuda del Usuario','',
+                                'Configuracion','Ayuda del Usuario',''
                                ],
                 #========
         'Actualizar Posicion': [
                                 'Mi informacion','','',
                                 'Donde estoy ahora?','Hacia donde voy?','',
                                 'Viajar ahora','','',
-                                'Ayuda del usuario','Atras','',
+                                'Ayuda del usuario','Atras'
                                 ],
                 'Registrarse': [
-                                'Registrarse como viajero',
+                                'Registrarse como Viajero',
                                 'Registrarse como Conductor',
-                                "Atras"
+                                'Atras',
                                 ],
-    'Registrarse como viajero': [
-                                'Guardar configuracion','Cancelar',
-                                'Mi informacion','Ayuda Viajero','',
-                                'Atras','','',
+    'Registrarse como Viajero': [
+                                'Comenzar Registro Viajero','','',
+                                'Atras'
                                 ],
   'Registrarse como Conductor': [
-                                'Guardar configuracion','Cancelar',
-                                'Mi informacion','Ayuda Conductor','',
-                                'Atras','','',
+                                'Comenzar Registro Conductor','','',
+                                'Atras'
+                                ],
+                     'Mi Ruta': [
+                                'Mostrar informacion','','',
+                                'Ruta salida ?','Ruta destino ?','',
+                                'Atras'
                                 ],
               'Configuracion': [
                                 'Calificame','','',
-                                'Unirse al grupo','Total de votos','',
-                                'Modelos vehiculos','Version App','',
-                                'Atras','','',
-
+                                'Unirse al grupo','Modelos vehiculos','',
+                                'Total de votos','Version App','Registrarse',
+                                'Atras'
+                               ],
+              'Viajar ahora': [
+                            'Coche_tradicional',
+                            'Coche_Guaguita',
+                            'Coche_planchero',
+                            'Bici_taxi',
+                            'Moto_taxi',
+                            'Motorina_taxi',
+                            'Automobil',
+                            'Camiones',
+                            'Camionetas',
+                            'Atras',
                                ],
                         }
 
@@ -397,7 +418,7 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
-    elif 'Actualizar Posicion' == MESSAGE: # will capture text of press buttons
+    elif 'Actualizar Posicion' == MESSAGE or '/Actualizar_Posicion' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
@@ -421,19 +442,71 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
+    elif 'Viajar ahora' == MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+        tele_bot.tele_buttons(
+                    bot = bot,
+                    message_id=MESSAGE_ID,
+                    key_dict_buttons='Viajar ahora',
+                    dict_buttons=data_buttons,
+                    row_number=3,
+                    message=f"Bienvenido al menu de {MESSAGE}",
+                    # resize=True,
+                    # show_keyboard=False,
+                    )
+    elif 'Registrarse como Conductor' == MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+        tele_bot.tele_buttons(
+                    bot = bot,
+                    message_id=MESSAGE_ID,
+                    key_dict_buttons='Registrarse como Conductor',
+                    dict_buttons=data_buttons,
+                    row_number=3,
+                    message=f"Bienvenido al menu de {MESSAGE}",
+                    # resize=True,
+                    # show_keyboard=False,
+                    )
+    elif 'Registrarse como Viajero' == MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+
+
+        tele_bot.tele_buttons(
+                    bot = bot,
+                    message_id=MESSAGE_ID,
+                    key_dict_buttons='Registrarse como Viajero',
+                    dict_buttons=data_buttons,
+                    row_number=3,
+                    message=f"Bienvenido al menu de {MESSAGE}",
+                    # resize=True,
+                    # show_keyboard=False,
+                    )
+
+    elif 'Mi Ruta' == MESSAGE or '/cual_es_mi_ruta' == MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+
+        tele_bot.tele_buttons(
+                    bot = bot,
+                    message_id=MESSAGE_ID,
+                    key_dict_buttons='Mi Ruta',
+                    dict_buttons=data_buttons,
+                    row_number=3,
+                    message=f"Bienvenido al menu de {MESSAGE}",
+                    # resize=True,
+                    # show_keyboard=False,
+                    )
     # ================================================= ADMIN
     elif '/set_help' == MESSAGE: # will capture text of press buttons
         if MESSAGE.startswith('/set_help'):
             message_formated = library_lenguage.read_header(data='SET_HELP')
             tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-    elif '/set_client' == MESSAGE.split(':')[0]: # will capture text of press buttons
+    elif '/set_client' == MESSAGE.split(':')[0] or 'Comenzar Registro Viajero' == MESSAGE: # will capture text of press buttons
         bot.send_chat_action(message.chat.id, 'typing')
         var_tmp = bot.send_message(message.chat.id, "\n\nIngrese su nombre:")
         bot.register_next_step_handler(var_tmp,
                                         client_name)
 
-    elif '/set_driver' == MESSAGE.split(':')[0]: # will capture text of press buttons
+    elif '/set_driver' == MESSAGE.split(':')[0] or 'Comenzar Registro Conductor' == MESSAGE: # will capture text of press buttons
         bot.send_chat_action(message.chat.id, 'typing')
         message_formated = library_lenguage.read_header(data='DRIVER_NAME')
 
@@ -451,12 +524,28 @@ def all_messages(message):
         tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
         # SET LOCATION
 
+    elif 'Ruta salida ?' == MESSAGE:
+        message_formated = library_lenguage.read_header(data='ORIGIN_PLACE')
+        tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
+        # SET LOCATION
+
+    elif 'Ruta destino ?' == MESSAGE:
+        message_formated = library_lenguage.read_header(data='FINISH_PLACE')
+        tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
+        # SET LOCATION
+
     # ================================================= ADMIN
 
     elif 'Modelos vehiculos' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         message_formated = library_lenguage.read_header(data='DRIVER_CAR')
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+    elif 'Version App' == MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+        with open('CHANGELOG.md' , 'r') as f:
+            message_formated = f.read()
+            tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
     elif '/unirse_al_grupo' == MESSAGE or 'Unirse al grupo'  == MESSAGE: # will capture text of press buttons
         message_formated = library_lenguage.read_header(data='GROUP')

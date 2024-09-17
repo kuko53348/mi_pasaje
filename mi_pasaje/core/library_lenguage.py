@@ -201,6 +201,22 @@ Los modelos pueden ajustarse en futuras versiones, por el momento disponemos con
 
 Modelos actuales existentes.
 """,
+'DRIVER_VEHICUL':"""
+NOTA:
+Los modelos pueden ajustarse en futuras versiones, por el momento disponemos con los modelos estandar para el transporte urbano comun de cuba.
+
+>> [+] - /Coche_tradicional
+>> [+] - /Coche_Guaguita
+>> [+] - /Coche_planchero
+>> [+] - /Bici_taxi
+>> [+] - /Moto_taxi
+>> [+] - /Motorina_taxi
+>> [+] - /Automobil
+>> [+] - /Camiones
+>> [+] - /Camionetas
+
+Modelos actuales existentes.
+""",
 }
 
 def read_header(data):
