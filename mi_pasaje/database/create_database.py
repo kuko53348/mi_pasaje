@@ -8,47 +8,47 @@ all_citys = {
     'Pinar_del_Rio':[
             'Guanes',
             'Mantua',
-            'Minas_de_Matahambre',
+            'Minas_Matahambre',
             'Vinales',
-            'San_Luis',
-            "San_Juan_y_Martinez",
+            'Pinar_San_Luis',
+            "S_Juan_Martinez",
             'Pinar_del_Rio',
             'Los_Palacios',
-            'Consolacion_del_Sur',
+            'Consolacion_Sur',
             'La_Palma',
             'Sandino',
-                ],
+            ],
     'Matanzas':[
-            'Matanzas',
-            'Cárdenas',
-            'Martí',
-            'Colón',
+            'Matanzas ',
+            'Cardenas',
+            'Marti',
+            'Colon',
             'Perico',
             'Jovellanos',
             'Pedro_Betancourt',
             'Limonar',
-            'Unión_de_Reyes',
-            'Ciénaga_de_Zapata',
+            'Unión_Reyes',
+            'Ciénaga_Zapata',
             'Jagüey_Grande',
             'Calimete',
             'Los_Arabos',
             ],
-    'Ciego_de_Avila':[
+    'Ciego_Avila':[
             'Bolivia',
             'Majagua',
             'Moron',
             'Florencia',
-            'Ciego_de_Avila',
+            'Ciego_Avila',
             'Baragua',
             'Venezuela',
             'Ciro_Redondo',
-            'Primero_de_Enero',
+            'Primero_Enero',
             'Chambas',
             ],
     'Artemisa':[
             'Alquizar',
             'Artemisa',
-            'San_Antonio_Banos',
+            'S_Antonio_Banos',
             'Caimito',
             'Mariel',
             'San_Cristobal',
@@ -56,7 +56,7 @@ all_citys = {
             'Bauta',
             'Candelaria',
             'Bahia_Honda',
-            'Guira_de_Melena',
+            'Guira_Melena',
             ],
     'Las_Tunas':[
             'Jesus_Menendez',
@@ -69,17 +69,17 @@ all_citys = {
             'Amancio',
             ],
     'La_Habana':[
-            'Plaza_de_la_Revolucion',
+            'Plaza_Revolucion',
             'Marianao',
             'Cotorro',
             'Cerro',
             'Centro_Habana',
             'Regla',
-            'San_Miguel_Padron',
+            'S_Miguel_Padron',
             'Boyeros',
             'Habana_Vieja',
             'Arrojo_Naranjo',
-            'Diez_de_Octubre',
+            'Diez_Octubre',
             'La_Lisa',
             'Guanabacoa',
             'Habana_del_Este',
@@ -87,7 +87,7 @@ all_citys = {
             ],
     'Cienfuegos':[
             'Cienfuegos',
-            'Aguada_de_Pasajeros',
+            'Aguada_Pasajeros',
             'Abreus',
             'Lajas',
             'Rodas',
@@ -105,7 +105,7 @@ all_citys = {
             'Cueto',
             'Holguin',
             'Gibara',
-            'Sagua_de_Tanamo',
+            'Sagua_Tanamo',
             'Calixto_Garcia',
             'Urbano_Noris',
             'Antilla',
@@ -122,30 +122,30 @@ all_citys = {
             'Trinidad',
             ],
     'Camaguey':[
-            'Jatibonico',
-            'Santa_Cruz_del_Sur',
+            'C_Jatibonico',
+            'Santa_Cruz_Sur',
             'Camaguey',
-            'Carlos_Manuel_Cespedes',
+            'C_Manuel_Cespedes',
             'Esmeralda',
             'Najasa',
-            'Sierra_de_Cubitas',
+            'Sierra_Cubitas',
             'Minas',
             'Nuevitas',
             'Florida',
             'Vertientes',
             'Sibanicu',
-        ],
-    'Santiago_de_Cuba':[
+            ],
+    'Santiago_Cuba':[
             'San_Luis',
             'Palma_Soriano',
             'Segundo_Frente',
             'Tercer_Frente',
             'Contramaestre',
             'Guama',
-            'Santiago_de_Cuba',
+            'Santiago_Cuba',
             'Songo_la_Maya',
             'Mella',
-        ],
+            ],
     'Granma':[
             'Manzanillo',
             'Buey_Arriba',
@@ -173,18 +173,17 @@ all_citys = {
             'Maisi',
             'Niceto_Perez',
             ],
-
     'Mayabeque':[
             'Jaruco',
             'Quivican',
             'San_Jose_Lajas',
             'Madruga',
             'Guines',
-            'Santa_Cruz_del_Norte',
+            'Santa_Cruz_Norte',
             'Batabano',
             'Nueva_Paz',
             'Bejucal',
-            'Melena_Del_Sur',
+            'Melena_del_Sur',
             'San_Nicolas',
             ],
     'Villa_Clara':[
@@ -198,7 +197,6 @@ all_citys = {
             'Sagua_la_Grande',
             ],
         }
-
 
 def CreateTableDatabase( hosting='', namedatabase='', user='', password='', tableName='',colums={}):
     """let create database in web host"""
@@ -259,7 +257,7 @@ if __name__ == '__main__':
     Username = 'root'
     Password = 'xavier007 '
 
-    NameDataBase = 'database.db'
+    NameDataBase = 'mi_botella_database'
     TableName='Bayamo'
     # CreateTableDatabase(
     #                 hosting=Server,
@@ -281,25 +279,46 @@ if __name__ == '__main__':
         # time.sleep(1)
 
         for tmp_city in all_citys.get(tmp_municipios):
+            # time.sleep(0.1)
             CreateTableDatabase(
                             hosting=Server,
                             namedatabase=NameDataBase,
                             user=Username,
                             password=Password,
 
-                            tableName= f"{tmp_city}" ,
+                            tableName= tmp_city ,
 
                             colums={
                                      'id_acc':'TEXT',
                                   'user_name':'TEXT',
                                    'telegram':'TEXT',
                                       'phone':'TEXT',
-                                  'transport':'TEXT',
-                                'origin_city':'TEXT',
+                               'car_capacity':'TEXT',
+                                   'time_acc':'TEXT',
                                 'photo_trans':'TEXT',
-                                   'time_acc':'TEXT'
+                                'origin_city':'TEXT',
+                               'destiny_city':'TEXT',
+                            'local_municipal':'TEXT', # sTrue False
                                     }
                             )
+    CreateTableDatabase(
+                    hosting=Server,
+                    namedatabase=NameDataBase,
+                    user=Username,
+                    password=Password,
+
+                    tableName='__DumpAllUsers',
+
+                    colums={
+                             'id_acc':'TEXT',
+                          'user_name':'TEXT',
+                           'telegram':'TEXT',
+                              'phone':'TEXT',
+                              'place':'TEXT',
+                           'time_acc':'TEXT',
+                               'type':'TEXT',
+                            }
+                    )
 
     CreateTableDatabase(
                     hosting=Server,
@@ -307,16 +326,36 @@ if __name__ == '__main__':
                     user=Username,
                     password=Password,
 
-                    tableName='Client',
+                    tableName='__Client',
 
                     colums={
                              'id_acc':'TEXT',
                           'user_name':'TEXT',
                            'telegram':'TEXT',
                               'phone':'TEXT',
-                           'time_acc':'TEXT'
+                              'place':'TEXT',
+                           'time_acc':'TEXT',
                             }
                     )
+    CreateTableDatabase(
+                    hosting=Server,
+                    namedatabase=NameDataBase,
+                    user=Username,
+                    password=Password,
+
+                    tableName='__Chofer',
+
+                    colums={
+                             'id_acc':'TEXT',
+                          'user_name':'TEXT',
+                           'telegram':'TEXT',
+                              'phone':'TEXT',
+                              'place':'TEXT',
+                           'time_acc':'TEXT',
+                            }
+                    )
+    #
+    #
     # eraseTableDatabase(
     #                 hosting=Server,
     #                 namedatabase=NameDataBase,
