@@ -174,9 +174,8 @@ Ingrese correctamente su movil o telefono fijo, con el cual el cliente que lo so
 
 Ejemplo:
 
-movil: 58335521
-fijo: 45335521
-
+Movil: +5358335521
+ Fijo: +45335521
 """,
 'DRIVER_NAME':"""
 NOTA:
@@ -185,6 +184,25 @@ Ingrese su nombre real con en cual el usuario lo puede llamar, revise si ha ingr
 Ejemplo: Juan Augusto Lima
 
 """,
+'CLIENT_NAME':"""
+NOTA:
+Ingrese su nombre real con en cual el Conductor lo puede llamar o saber como llamarlo, revise si ha ingresado correctamente los datos para hacer una correcta validacion de su registro.
+
+Ejemplo: Juan Augusto Lima
+
+""",
+
+'CLIENT_NUMBER':"""
+NOTA:
+Ingrese correctamente su movil o telefono fijo, con el cual el Conductor que lo solicite lo pueda llamar al movil para poder confirmar su pedido, y asi cubrir ambas necesidades.
+
+Ejemplo:
+
+Movil: +5358335521
+ Fijo: +45335521
+
+""",
+
 'DRIVER_CAR':"""
 NOTA:
 Los modelos pueden ajustarse en futuras versiones, por el momento disponemos con los modelos estandar para el transporte urbano comun de cuba.
@@ -217,6 +235,45 @@ Los modelos pueden ajustarse en futuras versiones, por el momento disponemos con
 
 Modelos actuales existentes.
 """,
+"CLIENT_REGISTER":"""
+
+NOTA:
+Usted esta punto de registrarse como un cuenta real, los datos ingresados deben estar correctos ya que al precionar acceptar se registrara toda la informacion y no podra modificar acto seguido de haber acceptado, porfavor lea, revise, y confirme.
+
+Registrado como:\t\tTYPE_USER
+Nombre:\t\tTYPE_NAME
+Movil:\t\tTYPE_NUMBER
+
+NOTA:
+
+Solo queda la ultima configuracion:
+
+/cual_es_mi_ruta
+
+Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
+
+""",
+"REGISTER":"""
+
+NOTA:
+Usted esta punto de registrarse como un cuenta real, los datos ingresados deben estar correctos ya que al precionar acceptar se registrara toda la informacion y no podra modificar acto seguido de haber acceptado, porfavor lea, revise, y confirme.
+
+Registrado como:\t\tTYPE_USER
+Nombre:\t\tTYPE_NAME
+Movil:\t\tTYPE_NUMBER
+Modelo de transporte:\t\t/TYPE_CAR
+Capacidad de transporte:\t\tTYPE_CAPACITY Clientes
+
+NOTA:
+
+Solo queda la ultima configuracion:
+
+/cual_es_mi_ruta
+
+Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
+
+"""
+
 }
 
 def read_header(data):

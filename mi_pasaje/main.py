@@ -20,283 +20,114 @@ bot = telebot.TeleBot(token="6636435110:AAEEbWZ9v_EhT_dDbzZvfTUX6gufLBEbVto")
 # ngrock HT3MVPEWGNABYMW3IS3CSOPOIUBCNTJG
 #
 #
-
-# all_citys = {
-
-#     'Pinar_del_Rio':[
-#             'Guanes',
-#             'Mantua',
-#             'Minas_Matahambre',
-#             'Vinales',
-#             'Pinar_San_Luis',
-#             "S_Juan_Martinez",
-#             'Pinar_del_Rio',
-#             'Los_Palacios',
-#             'Consolacion_Sur',
-#             'La_Palma',
-#             'Sandino',
-#             'Atras',
-#             ],
-#     'Matanzas':[
-#             'Matanzas ',
-#             'Cárdenas',
-#             'Martí',
-#             'Colón',
-#             'Perico',
-#             'Jovellanos',
-#             'Pedro_Betancourt',
-#             'Limonar',
-#             'Unión_Reyes',
-#             'Ciénaga_Zapata',
-#             'Jagüey_Grande',
-#             'Calimete',
-#             'Los_Arabos',
-#             'Atras',
-#             ],
-#     'Ciego_Avila':[
-#             'Bolivia',
-#             'Majagua',
-#             'Moron',
-#             'Florencia',
-#             'Ciego_Avila',
-#             'Baragua',
-#             'Venezuela',
-#             'Ciro_Redondo',
-#             'Primero_Enero',
-#             'Chambas',
-#             'Atras',
-#             ],
-#     'Artemisa':[
-#             'Alquizar',
-#             'Artemisa',
-#             'S_Antonio_Banos',
-#             'Caimito',
-#             'Mariel',
-#             'San_Cristobal',
-#             'Guanajay',
-#             'Bauta',
-#             'Candelaria',
-#             'Bahia_Honda',
-#             'Guira_Melena',
-#             'Atras',
-#             ],
-#     'Las_Tunas':[
-#             'Jesus_Menendez',
-#             'Manati',
-#             'Colombia',
-#             'Las_Tunas',
-#             'Majibacoa',
-#             'Puerto_Padre',
-#             'Jobabo',
-#             'Amancio',
-#             'Atras',
-#             ],
-#     'La_Habana':[
-#             'Plaza_Revolucion',
-#             'Marianao',
-#             'Cotorro',
-#             'Cerro',
-#             'Centro_Habana',
-#             'Regla',
-#             'S_Miguel_Padron',
-#             'Boyeros',
-#             'Habana_Vieja',
-#             'Arrojo_Naranjo',
-#             'Diez_Octubre',
-#             'La_Lisa',
-#             'Guanabacoa',
-#             'Habana_del_Este',
-#             'Playa',
-#             'Atras',
-#             ],
-#     'Cienfuegos':[
-#             'Cienfuegos',
-#             'Aguada_Pasajeros',
-#             'Abreus',
-#             'Lajas',
-#             'Rodas',
-#             'Cruces',
-#             'Palmira',
-#             'Cumanayagua',
-#             'Atras',
-#             ],
-#     'Holguin':[
-#             'Frank_Pais',
-#             'Cacocum',
-#             'Rafael_Freyre',
-#             'Banes',
-#             'Mayari',
-#             'Moa',
-#             'Cueto',
-#             'Holguin',
-#             'Gibara',
-#             'Sagua_Tanamo',
-#             'Calixto_Garcia',
-#             'Urbano_Noris',
-#             'Antilla',
-#             'Baguanos'
-#             'Atras',
-#             ],
-#     'Santi_Spiritus':[
-#             'Jatibonico',
-#             'Santi_Spiritus',
-#             'Cabaiguan',
-#             'La_Sierpe',
-#             'Yaguajay',
-#             'Fomento',
-#             'Taguasco',
-#             'Trinidad',
-#             'Atras',
-#             ],
-#     'Camaguey':[
-#             'C_Jatibonico',
-#             'Santa_Cruz_Sur',
-#             'Camaguey',
-#             'C_Manuel_Cespedes',
-#             'Esmeralda',
-#             'Najasa',
-#             'Sierra_Cubitas',
-#             'Minas',
-#             'Nuevitas',
-#             'Florida',
-#             'Vertientes',
-#             'Sibanicu',
-#             'Atras',
-#             ],
-#     'Santiago_Cuba':[
-#             'Pinar_San_Luis',
-#             'Palma_Soriano',
-#             'Segundo_Frente',
-#             'Tercer_Frente',
-#             'Contramaestre',
-#             'Guama',
-#             'Santiago_Cuba',
-#             'Songo_la_Maya',
-#             'Mella',
-#             'Atras',
-#             ],
-#     'Granma':[
-#             'Manzanillo',
-#             'Buey_Arriba',
-#             'Campechuela',
-#             'Bartolome_Maso',
-#             'Bayamo',
-#             'Media_Luna',
-#             'Pilón',
-#             'Yara',
-#             'Cauto_Cristo',
-#             'Guisa',
-#             'Río_Cauto',
-#             'Jiguaní',
-#             'Niquero',
-#             'Atras',
-#             ],
-#     'Guantanamo':[
-#             'Yateras',
-#             'El_Salvador',
-#             'Imias',
-#             'Caimanera',
-#             'Baracoa',
-#             'Guantanamo',
-#             'San_Antonio_Sur',
-#             'Manuel_Tames',
-#             'Maisi',
-#             'Niceto_Perez',
-#             'Atras',
-#             ],
-#     'Mayabeque':[
-#             'Jaruco',
-#             'Quivican',
-#             'San_Jose_Lajas',
-#             'Madruga',
-#             'Guines',
-#             'Santa_Cruz_Norte',
-#             'Batabano',
-#             'Nueva_Paz',
-#             'Bejucal',
-#             'Melena_del_Sur',
-#             'San_Nicolas',
-#             'Atras',
-#             ],
-#     'Villa_Clara':[
-#             'Corralillo',
-#             'Encrucijada',
-#             'Santo_Domingo',
-#             'Ranchuelo',
-#             'Caibarien',
-#             'Manicaragua',
-#             'Cifuentes',
-#             'Sagua_la_Grande',
-#             'Atras',
-#             ],
-#     'Atras':['Atras'],
-#         }
-
 client_registered: dict ={}
+
+data_buttons = {
+    'start': [
+        'Mi informacion', 'Establecer Ruta', '',
+        'Viajar ahora', '', '',
+        'Configuracion', 'Ayuda del Usuario', ''
+    ],
+    # ========
+    'Registrarse': [
+        'Registrarse como Viajero',
+        'Registrarse como Conductor',
+        'Atras',
+    ],
+    'Registrarse como Viajero': [
+        'Comenzar Registro Viajero', '', '',
+        'Atras'
+    ],
+    'Registrarse como Conductor': [
+        'Comenzar Registro Conductor', '', '',
+        'Atras'
+    ],
+    'Establecer Ruta': [
+        'Mostrar informacion de mi Ruta', '', '',
+        'Ruta salida ?', 'Ruta destino ?', '',
+        'Ruta En mi localidad', '', '',
+        'Atras',
+    ],
+    'Configuracion': [
+        'Calificame', '', '',
+        'Unirse al grupo', 'Modelos vehiculos', '',
+        'Total de votos', 'Version App', 'Registrarse',
+        'Atras'
+    ],
+    'Viajar ahora': [
+        'Coche_tradicional',
+        'Coche_Guaguita',
+        'Coche_planchero',
+        'Bici_taxi',
+        'Moto_taxi',
+        'Motorina_taxi',
+        'Automobil',
+        'Camiones',
+        'Camionetas',
+        'Atras',
+    ],
+}
+
 
 #=========================== CLIENT
 def client_number(message):
     tmp_message = message.text
-    print(f'El numero ingresado es: {tmp_message}:')
-    client_registered[message.chat.id]['number']=tmp_message
+    # print(f'El numero ingresado es: {tmp_message}:')
+    client_registered[message.chat.id]['number'] = tmp_message
+    # print(f'datos completados\n\n{client_registered}')
 
-    print(f'datos completados\n\n{client_registered}')
+    tmp_data = client_registered.get(message.chat.id)
+    message_formated = library_lenguage.read_header(data='CLIENT_REGISTER')
+    message_formated = message_formated.replace('TYPE_USER',tmp_data.get('type'))
+    message_formated = message_formated.replace('TYPE_NAME',tmp_data.get('name'))
+    message_formated = message_formated.replace('TYPE_NUMBER',tmp_data.get('number'))
+
+    var_tmp = bot.send_message(message.chat.id, message_formated)
+
+    # SET DATA IN MYSQL
+    print('CLIENT: ',client_registered[message.chat.id])
 
     del client_registered[message.chat.id]
 
-
 def client_name(message):
     tmp_message = message.text
-    print(f'El nombre ingresado es: {tmp_message}:')
+    # print(f'show name: {tmp_message}:')
 
-    client_registered[message.chat.id]={'type':'client'}
-    client_registered[message.chat.id]['nombre']=tmp_message
+    client_registered[message.chat.id]={'type':'Cliente'}
+    client_registered[message.chat.id]['name']=tmp_message
 
+    message_formated = library_lenguage.read_header(data='CLIENT_NUMBER')
     bot.send_chat_action(message.chat.id, 'typing')
-    var_tmp = bot.send_message(message.chat.id, "\n\nIngrese su numero:")
+    var_tmp = bot.send_message(message.chat.id, message_formated)
     bot.register_next_step_handler(var_tmp,
                                     client_number)
 
 #=========================== DRIVER
 def driver_capacity(message):
     tmp_message = message.text
-    print(f'show capaticy: {tmp_message}:')
+    # print(f'show capaticy: {tmp_message}:')
 
     client_registered[message.chat.id]['capacity']=tmp_message
-
     bot.send_chat_action(message.chat.id, 'typing')
+
     tmp_data = client_registered.get(message.chat.id)
-    message_formated = f"""
-
-NOTA:
-Usted esta punto de registrarse como un cuenta real, los datos ingresados deben estar correctos ya que al precionar acceptar se registrara toda la informacion y no podra modificar acto seguido de haber acceptado, porfavor lea, revise, y confirme.
-
-Registrado como:\t\t{tmp_data.get('type')}
-Nombre:\t\t{tmp_data.get('name')}
-Movil:\t\t{tmp_data.get('number')}
-Modelo de transporte:\t\t/{tmp_data.get('car')}
-Capacidad de transporte:\t\t{tmp_data.get('capacity')} Clientes
-
-NOTA:
-
-Solo queda la ultima configuracion:
-
-/cual_es_mi_ruta
-
-Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
-
-    """
+    message_formated = library_lenguage.read_header(data='REGISTER')
+    message_formated = message_formated.replace('TYPE_USER',tmp_data.get('type'))
+    message_formated = message_formated.replace('TYPE_NAME',tmp_data.get('name'))
+    message_formated = message_formated.replace('TYPE_NUMBER',tmp_data.get('number'))
+    message_formated = message_formated.replace('TYPE_CAR',tmp_data.get('car'))
+    message_formated = message_formated.replace('TYPE_CAPACITY',tmp_data.get('capacity'))
 
     var_tmp = bot.send_message(message.chat.id, message_formated)
 
-    # bot.register_next_step_handler(var_tmp,
-    print(f'datos completados\n\n{client_registered}')
-    #                                 driver_number)
+    # SET DATA IN MYSQL
+    print('DRIVER: ',client_registered[message.chat.id])
 
+    del client_registered[message.chat.id]
 
 def driver_number(message):
     tmp_message = message.text
-    print(f'show number: {tmp_message}:')
+    # print(f'show number: {tmp_message}:')
 
     client_registered[message.chat.id]['number']=tmp_message
 
@@ -308,7 +139,7 @@ def driver_number(message):
 
 def driver_cars(message):
     tmp_message = message.text
-    print(f'show car: {tmp_message}:')
+    # print(f'show car: {tmp_message}:')
 
     client_registered[message.chat.id]['car']=tmp_message
 
@@ -320,8 +151,7 @@ def driver_cars(message):
 
 def driver_name(message):
     tmp_message = message.text
-
-    print(f'show name: {tmp_message}:')
+    # print(f'show name: {tmp_message}:')
 
     client_registered[message.chat.id]={'type':'Conductor'}
     client_registered[message.chat.id]['name']=tmp_message
@@ -331,69 +161,16 @@ def driver_name(message):
     var_tmp = bot.send_message(message.chat.id, message_formated)
     bot.register_next_step_handler(var_tmp,
                                     driver_cars)
-#=========================== DRIVER
 
-
+#=========================== START BOT
 @bot.message_handler(func=lambda message:True)
 def all_messages(message):
-    data_buttons = {
-                      'start': [
-                                'Mi informacion', 'Actualizar Posicion','',
-                                'Viajar ahora','','',
-                                'Configuracion','Ayuda del Usuario',''
-                               ],
-                #========
-        'Actualizar Posicion': [
-                                'Mi informacion','','',
-                                'Donde estoy ahora?','Hacia donde voy?','',
-                                'Viajar ahora','','',
-                                'Ayuda del usuario','Atras'
-                                ],
-                'Registrarse': [
-                                'Registrarse como Viajero',
-                                'Registrarse como Conductor',
-                                'Atras',
-                                ],
-    'Registrarse como Viajero': [
-                                'Comenzar Registro Viajero','','',
-                                'Atras'
-                                ],
-  'Registrarse como Conductor': [
-                                'Comenzar Registro Conductor','','',
-                                'Atras'
-                                ],
-                     'Mi Ruta': [
-                                'Mostrar informacion','','',
-                                'Ruta salida ?','Ruta destino ?','',
-                                'Atras'
-                                ],
-              'Configuracion': [
-                                'Calificame','','',
-                                'Unirse al grupo','Modelos vehiculos','',
-                                'Total de votos','Version App','Registrarse',
-                                'Atras'
-                               ],
-              'Viajar ahora': [
-                            'Coche_tradicional',
-                            'Coche_Guaguita',
-                            'Coche_planchero',
-                            'Bici_taxi',
-                            'Moto_taxi',
-                            'Motorina_taxi',
-                            'Automobil',
-                            'Camiones',
-                            'Camionetas',
-                            'Atras',
-                               ],
-                        }
-
     MESSAGE_ID = message.chat.id
     MESSAGE    = message.text
 
     # ===================================== MENU ================================
     if '/start' ==  MESSAGE or 'Atras' ==  MESSAGE or  '/atras' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
-
         message_formated = library_lenguage.read_header(data='NOTA')
         tele_bot.tele_buttons(
                     bot = bot,
@@ -481,13 +258,12 @@ def all_messages(message):
                     # show_keyboard=False,
                     )
 
-    elif 'Mi Ruta' == MESSAGE or '/cual_es_mi_ruta' == MESSAGE: # will capture text of press buttons
+    elif 'Establecer Ruta' == MESSAGE or '/cual_es_mi_ruta' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
-
         tele_bot.tele_buttons(
                     bot = bot,
                     message_id=MESSAGE_ID,
-                    key_dict_buttons='Mi Ruta',
+                    key_dict_buttons='Establecer Ruta',
                     dict_buttons=data_buttons,
                     row_number=3,
                     message=f"Bienvenido al menu de {MESSAGE}",
@@ -502,7 +278,9 @@ def all_messages(message):
 
     elif '/set_client' == MESSAGE.split(':')[0] or 'Comenzar Registro Viajero' == MESSAGE: # will capture text of press buttons
         bot.send_chat_action(message.chat.id, 'typing')
-        var_tmp = bot.send_message(message.chat.id, "\n\nIngrese su nombre:")
+        message_formated = library_lenguage.read_header(data='CLIENT_NAME')
+
+        var_tmp = bot.send_message(message.chat.id, message_formated)
         bot.register_next_step_handler(var_tmp,
                                         client_name)
 
@@ -524,7 +302,7 @@ def all_messages(message):
         tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
         # SET LOCATION
 
-    elif 'Ruta salida ?' == MESSAGE:
+    elif 'Ruta salida ?' == MESSAGE or 'Ruta En mi localidad' == MESSAGE:
         message_formated = library_lenguage.read_header(data='ORIGIN_PLACE')
         tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
         # SET LOCATION
@@ -541,7 +319,7 @@ def all_messages(message):
         message_formated = library_lenguage.read_header(data='DRIVER_CAR')
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-    elif 'Version App' == MESSAGE: # will capture text of press buttons
+    elif 'Version App' == MESSAGE or '/app_version' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         with open('CHANGELOG.md' , 'r') as f:
             message_formated = f.read()
@@ -594,20 +372,6 @@ def all_messages(message):
                 else:
                     tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message='/ayuda_usuario' )
 
-            # elif check_name == 'known':
-            #     message_formated = library_lenguage.read_header(data='NOTA')
-            #     tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
-
-            # else:
-            #     tele_bot.tele_buttons(
-            #                 bot = bot,
-            #                 message_id=MESSAGE_ID,
-            #                 key_dict_buttons=MESSAGE,
-            #                 dict_buttons=all_citys,
-            #                 row_number=3,
-            #                 message=f"Bienvenido al menu de {MESSAGE}",
-            #                 )
-
 if __name__ == '__main__':
     tele_bot = library_telebot.tele_bot
     MenuCommand = library_telebot.tele_bot.MenuCommand
@@ -617,14 +381,13 @@ if __name__ == '__main__':
     connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
 
     list_all_commands = {
-                        'start':'Lobby de bienvenida a Mi pasaje App',
                         'registrarse':'Registrarse como usuario o conductor',
+                        'start':'Lobby de bienvenida a Mi pasaje App',
                         'unirse_al_grupo':'Grupo creado para compartir ideas',
                         'califiar_app':'Calificame su opinion de la App',
-                        'total_votos':'Ver cantidad de votos y aceptacion de la app chofe_parada',
-                        'registrarse':'Registrarse en mi pasaje App',
-                        'ayuda':'Principales dudas',
                         'donacion':'Puede contruir con la App',
+                        'app_version':'Version de la App Actualmente',
+                        'ayuda':'Principales dudas',
                         }
     try:
         MenuCommand(bot,list_all_commands)
