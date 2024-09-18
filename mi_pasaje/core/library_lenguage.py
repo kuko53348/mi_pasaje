@@ -1,154 +1,306 @@
-leng_ing={
-# =============================================
-'CHECK_BALANCE':"""
-<b>
-/// DEPOSIT MATIC: ERC-20 ///
-
-<CODE> WALLET_MATIC </CODE>
-
-/// DEPOSIT TRON: TRC-20 ///
-
-<CODE> WALLET_TRON </CODE>
-
-/// BALANCE IN WALLET ///
-
-BALANCE MATIC  :        AMOUNT_MATIC
-BALANCE TRON  :         AMOUNT_TRON
-
-/// BALANCE IN CHAT ///
-
-BALANCE CHAT-GPT  :      AMOUNT_CHAT
-</b>
-""",
-"GPT_TOKENS_BALANCE":"""
-TOKENS TO ASK QUESTIONS:
-
-29 GPT-TOKEN  = 1 USD
-  1 GPT-TOKEN  = 1 QUESTION
-   1 QUESTION   = 0.035 USD
-
-GPT-TOKENS: BALANCE
-
-
-""",
-"ERROR_CHAT_PGT":'''
-Please is posible make the same question but with `,` to separate correctly the question.
-Reality sorry if make a you trouble but can not understand the question that you made.''',
-
-"NO_REGISTERED":"/// PLEASE REGISTER FIRST YOU ARE NOT REGISTERED ///",
-"REGISTERED":"/// YOU ARE REGISTERED CAN NOT HAVE 2 ACCOUNT ///",
-'CONGRATULATION':'CONGRATULATION YOU ARE NEW MEMBER OF CHAT-GPT FAMILY',
-"ERROR":"PLEASE TRY AGAIN SOME ERROR APPEAR",
-"RECHARGE_WELCOME":"""
-WELCOME USER:
-
-NOTE:
-
-WE CREATE A PERSONAL WALLLET FOR DEPOSITE YOUR FOUNDS.
-
-AFTER DEPOSITE TRANSFER PRESS TRANSFER TOKEN BUTTON AND ALL FOUNDS WILL BE SWAP IN GPT-TOKEN.
-
-NOW GPT-TOKEN WILL BE ONLY IN INTERNAL BALANCE BUT ON FUTURE WE WILL MAKE A PRESALE SELECTION.
-
-MINIMUM ARE: 29 GPT-TOKEN
-
-29 GPT-TOKEN  = 1 USD
-  1 GPT-TOKEN  = 1 QUESTION
-   1 QUESTION   = 0.035 USD
-
-""",
-"RECHARGE":"""PLEASE RECHARGE THE FOUNDS OF YOUR INTERNAL WALLET
-
-MINIMUM ARE 29 GPT-TOKEN = 1 USD
-
-""",
-"ERROR_TRANSACTION":"PLEASE TRY AGAIN IN 2 MINUTES NETWOTK BUSY",
-
-"CHECK_COIN":"""
-=========================
-/// CRYPTO: TRX_COIN ///
-=========================
-
-MARKET PRICE: 1 TRX_COIN\t= TRX_MARKET_PRICE USD
-MARKET PRICE: 1 USD\t= TRX_BALANCE_USD TRX_COIN
-
-BALANCE:\t TRX_WALLET TRX_COIN
-USD:\t\t TRX_USD
-CHAT-GPT:\t TRX_CHAT_GPT_TOKEN
-
-=========================
-/// CRYPTO: MATIC_COIN ///
-=========================
-
-MARKET PRICE: 1 MATIC_COIN\t= MATIC_MARKET_PRICE USD
-MARKET PRICE: 1 USD\t= MATIC_BALANCE_USD MATIC_COIN
-
-BALANCE:\t MATIC_WALLET MATIC_COIN
-USD:\t\t MATIC_USD
-CHAT-GPT:\t MATIC_CHAT_GPT_TOKEN
-
-=========================
-/// TOTAL: BIG_TOTAL + 1 FREE ///
-=========================
-""",
-
-"SENDING_TRANSACTION":"""
-/// MAKING TRANSACTION .... ///
-""",
-"CONGRATULATION_TRON":"""
-=========================
-/// TRANSACTION SUCCEFULLY ///
-=========================
-
-BALANCE COIN
-
-<a href="LINK_TRANSACTION">𝙏𝙍𝘼𝙉𝙎𝘼𝘾𝙏𝙄𝙊𝙉𝙎 𝙏𝙍𝙊𝙉 </a>
-""",
-"CONGRATULATION_MATIC":"""
-=========================
-/// TRANSACTION SUCCEFULLY ///
-=========================
-
-BALANCE COIN
-
-<a href="LINK_TRANSACTION">𝙏𝙍𝘼𝙉𝙎𝘼𝘾𝙏𝙄𝙊𝙉𝙎 𝙈𝘼𝙏𝙄𝘾</a>
-""",
-"GPT_TOKENS":"""
-YOU HAVE GET AMOUNT_CHAT CHAT-GPT
-
-
-START CHAT-GPT NOW !!!
-""",
-"HELP_CHAT":"""
-ChatGPT is a language model developed by OpenAI. It uses deep learning techniques to generate human-like responses based on given prompts or questions. Trained on a massive amount of internet text, ChatGPT has the capability to understand and generate text in a conversational manner, making it suitable for interactive applications like chat-bots or virtual assistants. It has proven to be adept at answering questions, providing explanations, and engaging in casual conversation, thus enhancing user experiences in various domains.""",
-
-"ABOUT":""" BOT CHAT-GPT VERSION 0.0.1
-
-ChatGPT is an advanced conversational AI model developed by OpenAI. It is designed to generate human-like responses by understanding and generating text based on the context of a conversation. Using a machine learning technique called deep learning, ChatGPT has been trained on extensive amounts of data from the internet to become a powerful language model.
-
-ChatGPT utilizes a transformer architecture that enables it to capture the relationships between words and generate coherent and meaningful responses. Its ability to understand and generate natural language makes it ideal for various conversational tasks, such as answering questions and engaging in interactive discussions.
-
-AI, or artificial intelligence, refers to the simulation of human intelligence in machines that are programmed to mimic and perform cognitive tasks. AI aims to create systems that can learn, reason, and make decisions autonomously, similar to how humans do. Machine learning, a subset of AI, focuses on developing algorithms that enable computers to learn and improve from data without being explicitly programmed.
-
-The combination of ChatGPT's conversational capabilities and the broader concept of AI brings forth a powerful tool. It allows for the development of intelligent systems that can engage in human-like conversations, assist users in various tasks, and provide valuable insights. With further advancements, AI and models like ChatGPT have the potential to transform industries, enhance productivity, and reshape the way we interact with technology.""",
-"WELCOME_GROUP":"""
-📢 Join CHAT-GPT - the revolutionary Google search engine!
-
-We cordially invite you to experience the future of AI-driven conversations at CHAT-GPT. As a collaborative effort by a team of talented Vietnamese engineers from Eastern Laos, we have developed a game-changing search engine that combines the accuracy of Google's results with the engaging responses of ChatGPT.
-
-At CHAT-GPT, you can explore a range of topics and receive personalized answers straight from our innovative AI chatbot. Whether you're seeking information, engaging in intriguing discussions, or simply looking for a virtual companion, CHAT-GPT.ai is the perfect destination.
-
-To embark on this exciting journey, simply click the link below and join our Telegram group:
-
-        👉 <a href="https://t.me/+lgbyrbAag1hmYmNh">𝙅𝙊𝙄𝙉 𝙏𝙊 𝙏𝙃𝙀 𝙂𝙍𝙊𝙐𝙋</a> 👈
-
-Discover the next level of search experience with CHAT-GPT! We can't wait to explore the endless possibilities of knowledge and conversation together. See you there! 🌟""",
-'START_CHAT':""" Sure! Feel free to ask any question you have, and I'll do my best to provide you with a helpful answer.""",
-}
 message_formated = {
+'CHECK_CITYS':{
 
-    'NOTA':'📢  NOTA:\n\nUsted puede acceder a mi botella de manera gratuita. Solamente pedimos que se registre con el comando siguiente:\n\n/registrarse\n\nUsted no tiene compartirnos sus datos personales, solo le pedimos su nombre y su telefono.\nEn caso de ser conductor, si deberia contactarme personalmente.\nAl usuario: @Bodyasshole en telegram\nDespues de confirmar sus datos, seran agregado en la base de datos, totalmente GRATIS.\nEste BOT esta en fase BETA en un futuro se modificara las politicas de administracion.\npor lo demas disfrute version demo de Mi botella App...',
+'Guanes' , 'Mantua' , 'Minas_Matahambre' , 'Vinales' , 'Pinar_San_Luis' , 'S_Juan_Martinez' , 'Pinar_del_Rio' , 'Los_Palacios' , 'Consolacion_Sur' , 'La_Palma' , 'Sandino',
+'Matanzas' , 'Cardenas' , 'Marti' , 'Colon' , 'Perico' , 'Jovellanos' , 'Pedro_Betancourt' , 'Limonar' , 'Union_Reyes' , 'Cienaga_Zapata' , 'Jaguey_Grande' , 'Calimete' ,
+'Los_Arabos','Bolivia' , 'Majagua' , 'Moron' , 'Florencia' , 'Ciego_Avila' , 'Baragua' , 'Venezuela' , 'Ciro_Redondo' , 'Primero_Enero' , 'Chambas','Alquizar' , 'Artemisa' ,
+'S_Antonio_Banos' , 'Caimito' , 'Mariel' , 'San_Cristobal' , 'Guanajay' , 'Bauta' , 'Candelaria' , 'Bahia_Honda' , 'Guira_Melena', 'Jesus_Menendez' ,
+'Manati' , 'Colombia' , 'Las_Tunas' , 'Majibacoa' , 'Puerto_Padre' , 'Jobabo' , 'Amancio', 'Plaza_Revolucion' , 'Marianao' , 'Cotorro' , 'Cerro' , 'Centro_Habana' , 'Regla' ,
+'S_Miguel_Padron' , 'Boyeros' , 'Habana_Vieja' , 'Arrojo_Naranjo' , 'Diez_Octubre' , 'La_Lisa' , 'Guanabacoa' , 'Habana_del_Este' , 'Playa','Cienfuegos' , 'Aguada_Pasajeros' ,
+'Abreus' , 'Lajas' , 'Rodas' , 'Cruces' , 'Palmira' , 'Cumanayagua', 'Frank_Pais' , 'Cacocum' , 'Rafael_Freyre' , 'Banes' , 'Mayari' , 'Moa' , 'Cueto' , 'Holguin' , 'Gibara' ,
+'Sagua_Tanamo' , 'Calixto_Garcia' , 'Urbano_Noris' , 'Antilla' , 'Baguanos', 'Jatibonico' , 'Santi_Spiritus' , 'Cabaiguan' , 'La_Sierpe' , 'Yaguajay' , 'Fomento' , 'Taguasco' ,
+'Trinidad', 'C_Jatibonico' , 'Santa_Cruz_Sur' , 'Camaguey' , 'C_Manuel_Cespedes' , 'Esmeralda' , 'Najasa' , 'Sierra_Cubitas' , 'Minas' , 'Nuevitas' , 'Florida' , 'Vertientes' ,
+'Sibanicu' , 'San_Luis' , 'Palma_Soriano' , 'Segundo_Frente' , 'Tercer_Frente' , 'Contramaestre' , 'Guama' , 'Santiago_Cuba' , 'Songo_la_Maya' , 'Mella' , 'Manzanillo' ,
+'Buey_Arriba' , 'Campechuela' , 'Bartolome_Maso' , 'Bayamo' , 'Media_Luna' , 'Pilon' , 'Yara' , 'Cauto_Cristo' , 'Guisa' , 'Rio_Cauto' , 'Jiguani' , 'Niquero' , 'Yateras' ,
+'El_Salvador' , 'Imias' , 'Caimanera' , 'Baracoa' , 'Guantanamo' , 'San_Antonio_Sur' , 'Manuel_Tames' , 'Maisi' , 'Niceto_Perez' , 'Jaruco' , 'Quivican' , 'San_Jose_Lajas' ,
+'Madruga' , 'Guines' , 'Santa_Cruz_Norte' , 'Batabano' , 'Nueva_Paz' , 'Bejucal' , 'Melena_del_Sur' , 'San_Nicolas', 'Corralillo' , 'Encrucijada' , 'Santo_Domingo' , 'Ranchuelo' ,
+'Caibarien' , 'Manicaragua' , 'Cifuentes' , 'Sagua_la_Grande'},
+
+'NOTA':'📢  NOTA:\n\nUsted puede acceder a mi botella de manera gratuita. Solamente pedimos que se registre con el comando siguiente:\n\n/registrarse\n\nUsted no tiene compartirnos sus datos personales, solo le pedimos su nombre y su telefono.\nEn caso de ser conductor, si deberia contactarme personalmente.\nAl usuario: @Bodyasshole en telegram\nDespues de confirmar sus datos, seran agregado en la base de datos, totalmente GRATIS.\nEste BOT esta en fase BETA en un futuro se modificara las politicas de administracion.\npor lo demas disfrute version demo de Mi botella App...',
     'GROUP':'Used puede compartir sus ideas y sugerencias en Nuestro grupo su grupo\n\n👉 <a href="https://t.me/+DkcqyAf0vxJhNTEx">𝙅𝙊𝙄𝙉 𝙏𝙊 𝙏𝙃𝙀 𝙂𝙍𝙊𝙐𝙋</a> 👈',
+'ORIGIN_PLACE':"""
+Pinar_del_Rio:
+
+/_Guanes , /_Mantua , /_Minas_Matahambre , /_Vinales , /_Pinar_San_Luis , /_S_Juan_Martinez , /_Pinar_del_Rio , /_Los_Palacios , /_Consolacion_Sur , /_La_Palma , /_Sandino,
+
+Artemisa:
+
+/_Alquizar , /_Artemisa , /_S_Antonio_Banos , /_Caimito , /_Mariel , /_San_Cristobal , /_Guanajay , /_Bauta , /_Candelaria , /_Bahia_Honda , /_Guira_Melena,
+
+La_Habana:
+
+/_Plaza_Revolucion , /_Marianao , /_Cotorro , /_Cerro , /_Centro_Habana , /_Regla , /_S_Miguel_Padron , /_Boyeros , /_Habana_Vieja , /_Arrojo_Naranjo , /_Diez_Octubre , /_La_Lisa , /_Guanabacoa , /_Habana_del_Este , /_Playa,
+
+Mayabeque:
+
+/_Jaruco , /_Quivican , /_San_Jose_Lajas , /_Madruga , /_Guines , /_Santa_Cruz_Norte , /_Batabano , /_Nueva_Paz , /_Bejucal , /_Melena_del_Sur , /_San_Nicolas,
+
+Matanzas:
+
+/_Matanzas , /_Cardenas , /_Marti , /_Colon , /_Perico , /_Jovellanos , /_Pedro_Betancourt , /_Limonar , /_Union_Reyes , /_Cienaga_Zapata , /_Jaguey_Grande , /_Calimete , /_Los_Arabos,
+
+Cienfuegos:
+
+/_Cienfuegos , /_Aguada_Pasajeros , /_Abreus , /_Lajas , /_Rodas , /_Cruces , /_Palmira , /_Cumanayagua,
+
+Villa_Clara:
+
+/_Corralillo , /_Encrucijada , /_Santo_Domingo , /_Ranchuelo , /_Caibarien , /_Manicaragua , /_Cifuentes , /_Sagua_la_Grande,
+
+Santi_Spiritus:
+
+/_Jatibonico , /_Santi_Spiritus , /_Cabaiguan , /_La_Sierpe , /_Yaguajay , /_Fomento , /_Taguasco , /_Trinidad,
+
+Ciego_Avila:
+
+/_Bolivia , /_Majagua , /_Moron , /_Florencia , /_Ciego_Avila , /_Baragua , /_Venezuela , /_Ciro_Redondo , /_Primero_Enero , /_Chambas,
+
+Camaguey:
+
+/_C_Jatibonico , /_Santa_Cruz_Sur , /_Camaguey , /_C_Manuel_Cespedes , /_Esmeralda , /_Najasa , /_Sierra_Cubitas , /_Minas , /_Nuevitas , /_Florida , /_Vertientes , /_Sibanicu,
+
+Las_Tunas:
+
+/_Jesus_Menendez , /_Manati , /_Colombia , /_Las_Tunas , /_Majibacoa , /_Puerto_Padre , /_Jobabo , /_Amancio,
+
+Holguin:
+
+/_Frank_Pais , /_Cacocum , /_Rafael_Freyre , /_Banes , /_Mayari , /_Moa , /_Cueto , /_Holguin , /_Gibara , /_Sagua_Tanamo , /_Calixto_Garcia , /_Urbano_Noris , /_Antilla , /_Baguanos
+
+Granma:
+
+/_Manzanillo , /_Buey_Arriba , /_Campechuela , /_Bartolome_Maso , /_Bayamo , /_Media_Luna , /_Pilon , /_Yara , /_Cauto_Cristo , /_Guisa , /_Rio_Cauto , /_Jiguani , /_Niquero,
+
+Santiago_Cuba:
+
+/_San_Luis , /_Palma_Soriano , /_Segundo_Frente , /_Tercer_Frente , /_Contramaestre , /_Guama , /_Santiago_Cuba , /_Songo_la_Maya , /_Mella,
+
+Guantanamo:
+
+/_Yateras , /_El_Salvador , /_Imias , /_Caimanera , /_Baracoa , /_Guantanamo , /_San_Antonio_Sur , /_Manuel_Tames , /_Maisi , /_Niceto_Perez,
+""",
+
+'FINISH_PLACE':"""
+Pinar_del_Rio:
+
+/__Guanes , /__Mantua , /__Minas_Matahambre , /__Vinales , /__Pinar_San_Luis , /__S_Juan_Martinez , /__Pinar_del_Rio , /__Los_Palacios , /__Consolacion_Sur , /__La_Palma , /__Sandino,
+
+Artemisa:
+
+/__Alquizar , /__Artemisa , /__S_Antonio_Banos , /__Caimito , /__Mariel , /__San_Cristobal , /__Guanajay , /__Bauta , /__Candelaria , /__Bahia_Honda , /__Guira_Melena,
+
+La_Habana:
+
+/__Plaza_Revolucion , /__Marianao , /__Cotorro , /__Cerro , /__Centro_Habana , /__Regla , /__S_Miguel_Padron , /__Boyeros , /__Habana_Vieja , /__Arrojo_Naranjo , /__Diez_Octubre , /__La_Lisa , /__Guanabacoa , /__Habana_del_Este , /__Playa,
+
+Mayabeque:
+
+/__Jaruco , /__Quivican , /__San_Jose_Lajas , /__Madruga , /__Guines , /__Santa_Cruz_Norte , /__Batabano , /__Nueva_Paz , /__Bejucal , /__Melena_del_Sur , /__San_Nicolas,
+
+Matanzas:
+
+/__Matanzas , /__Cardenas , /__Marti , /__Colon , /__Perico , /__Jovellanos , /__Pedro_Betancourt , /__Limonar , /__Union_Reyes , /__Cienaga_Zapata , /__Jaguey_Grande , /__Calimete , /__Los_Arabos,
+
+Cienfuegos:
+
+/__Cienfuegos , /__Aguada_Pasajeros , /__Abreus , /__Lajas , /__Rodas , /__Cruces , /__Palmira , /__Cumanayagua,
+
+Villa_Clara:
+
+/__Corralillo , /__Encrucijada , /__Santo_Domingo , /__Ranchuelo , /__Caibarien , /__Manicaragua , /__Cifuentes , /__Sagua_la_Grande,
+
+Santi_Spiritus:
+
+/__Jatibonico , /__Santi_Spiritus , /__Cabaiguan , /__La_Sierpe , /__Yaguajay , /__Fomento , /__Taguasco , /__Trinidad,
+
+Ciego_Avila:
+
+/__Bolivia , /__Majagua , /__Moron , /__Florencia , /__Ciego_Avila , /__Baragua , /__Venezuela , /__Ciro_Redondo , /__Primero_Enero , /__Chambas,
+
+Camaguey:
+
+/__C_Jatibonico , /__Santa_Cruz_Sur , /__Camaguey , /__C_Manuel_Cespedes , /__Esmeralda , /__Najasa , /__Sierra_Cubitas , /__Minas , /__Nuevitas , /__Florida , /__Vertientes , /__Sibanicu,
+
+Las_Tunas:
+
+/__Jesus_Menendez , /__Manati , /__Colombia , /__Las_Tunas , /__Majibacoa , /__Puerto_Padre , /__Jobabo , /__Amancio,
+
+Holguin:
+
+/__Frank_Pais , /__Cacocum , /__Rafael_Freyre , /__Banes , /__Mayari , /__Moa , /__Cueto , /__Holguin , /__Gibara , /__Sagua_Tanamo , /__Calixto_Garcia , /__Urbano_Noris , /__Antilla , /__Baguanos
+
+Granma:
+
+/__Manzanillo , /__Buey_Arriba , /__Campechuela , /__Bartolome_Maso , /__Bayamo , /__Media_Luna , /__Pilon , /__Yara , /__Cauto_Cristo , /__Guisa , /__Rio_Cauto , /__Jiguani , /__Niquero,
+
+Santiago_Cuba:
+
+/__San_Luis , /__Palma_Soriano , /__Segundo_Frente , /__Tercer_Frente , /__Contramaestre , /__Guama , /__Santiago_Cuba , /__Songo_la_Maya , /__Mella,
+
+Guantanamo:
+
+/__Yateras , /__El_Salvador , /__Imias , /__Caimanera , /__Baracoa , /__Guantanamo , /__San_Antonio_Sur , /__Manuel_Tames , /__Maisi , /__Niceto_Perez,
+""",
+'SET_HELP':"""Ayuda para el Admin
+
+Comandos:
+
+CLIENTE nombre, telefono
+
+/set_client:javier_quesada_reyes,535444844
+
+TRABAJADOR:
+
+nombre ,
+telefono,
+lugar,
+destino,
+plazas,
+
+/set_worker:javier_quesada_reyes,535444844,
+
+""",
+'DRIVER_CAPACITY':"""
+NOTA:
+
+Escriba el numero corecto de pasajeros que dispone su vehiculo o medio de transporte ya que dependiendo su capacidad el usuario puede tener mas clara la necesidad de solicitar su servicio.
+
+Ejemplo: 4
+
+""",
+'DRIVER_NUMBER':"""
+NOTA:
+Ingrese correctamente su movil o telefono fijo, con el cual el cliente que lo solicite lo pueda llamar para poder recivir su servicio, y asi cubrir ambas necesidades.
+
+Ejemplo:
+
+Movil: +5358335521
+ 📞 : +45335521
+""",
+'DRIVER_NAME':"""
+NOTA:
+Ingrese su nombre real con en cual el usuario lo puede llamar, revise si ha ingresado correctamente los datos para hacer una correcta validacion de su registro.
+
+Ejemplo: Juan Augusto Lima
+
+""",
+'CLIENT_NAME':"""
+NOTA:
+Ingrese su nombre real con en cual el Conductor lo puede llamar o saber como llamarlo, revise si ha ingresado correctamente los datos para hacer una correcta validacion de su registro.
+
+Ejemplo: Juan Augusto Lima
+
+""",
+
+'CLIENT_NUMBER':"""
+NOTA:
+Ingrese correctamente su movil o telefono fijo, con el cual el Conductor que lo solicite lo pueda llamar al movil para poder confirmar su pedido, y asi cubrir ambas necesidades.
+
+Ejemplo:
+
+Movil: +5358335521
+ 📞 : +45335521
+
+""",
+
+'DRIVER_CAR':"""
+NOTA:
+Los modelos pueden ajustarse en futuras versiones, por el momento disponemos con los modelos estandar para el transporte urbano comun de cuba.
+
+>> [+] - Coche_tradicional
+>> [+] - Coche_Guaguita
+>> [+] - Coche_planchero
+>> [+] - Bici_taxi
+>> [+] - Moto_taxi
+>> [+] - Motorina_taxi
+>> [+] - Automobil
+>> [+] - Camiones
+>> [+] - Camionetas
+
+Modelos actuales existentes.
+""",
+'DRIVER_VEHICUL':"""
+NOTA:
+Los modelos pueden ajustarse en futuras versiones, por el momento disponemos con los modelos estandar para el transporte urbano comun de cuba.
+
+>> [+] - /Coche_tradicional
+>> [+] - /Coche_Guaguita
+>> [+] - /Coche_planchero
+>> [+] - /Bici_taxi
+>> [+] - /Moto_taxi
+>> [+] - /Motorina_taxi
+>> [+] - /Automobil
+>> [+] - /Camiones
+>> [+] - /Camionetas
+
+Modelos actuales existentes.
+""",
+"CLIENT_EXIT_LAS_CONFIG":"""
+NOTA:
+Usted Tiene una cuenta asociada a la App solo se permiten 1 cuenta por Usuarios porfavor en caso de eliminar la cuenta anterior escriba directo al administrador y solicite el cambio o eliminacion de la cuenta existente.
+Solo queda la ultima configuracion:
+
+/cual_es_mi_ruta
+
+Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
+
+""",
+"CLIENT_EXIT":"""
+NOTA:
+Usted Tiene una cuenta asociada a la App solo se permiten 1 cuenta por Usuarios porfavor en caso de eliminar la cuenta anterior escriba directo al administrador y solicite el cambio o eliminacion de la cuenta existente.
+
+Registrado como:\t\tTYPE_USER
+Nombre:\t\tTYPE_NAME
+Movil:\t\tTYPE_NUMBER
+
+NOTA:
+
+Solo queda la ultima configuracion:
+
+/cual_es_mi_ruta
+
+Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
+
+""",
+"CLIENT_REGISTER":"""
+
+NOTA:
+Usted esta punto de registrarse como un cuenta real, los datos ingresados deben estar correctos ya que al precionar acceptar se registrara toda la informacion y no podra modificar acto seguido de haber acceptado, porfavor lea, revise, y confirme.
+
+Registrado como:\t\tTYPE_USER
+Nombre:\t\tTYPE_NAME
+Movil:\t\tTYPE_NUMBER
+
+NOTA:
+
+Solo queda la ultima configuracion:
+
+/cual_es_mi_ruta
+
+Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
+
+""",
+"REGISTER":"""
+
+NOTA:
+Usted esta punto de registrarse como un cuenta real, los datos ingresados deben estar correctos ya que al precionar acceptar se registrara toda la informacion y no podra modificar acto seguido de haber acceptado, porfavor lea, revise, y confirme.
+
+Registrado como:\t\tTYPE_USER
+Nombre:\t\tTYPE_NAME
+Movil:\t\tTYPE_NUMBER
+Modelo de transporte:\t\t/TYPE_CAR
+Capacidad de transporte:\t\tTYPE_CAPACITY Clientes
+
+NOTA:
+
+Solo queda la ultima configuracion:
+
+/cual_es_mi_ruta
+
+Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
+
+"""
+
 }
 
 def read_header(data):
