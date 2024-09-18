@@ -252,6 +252,8 @@ Usted Tiene una cuenta asociada a la App solo se permiten 1 cuenta por Usuarios 
 Registrado como:\t\tTYPE_USER
 Nombre:\t\tTYPE_NAME
 Movil:\t\tTYPE_NUMBER
+Origen:\t\tTYPE_ORIGIN
+Destino:\t\tTYPE_DESTINY
 
 NOTA:
 
@@ -299,7 +301,17 @@ Solo queda la ultima configuracion:
 
 Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
 
-"""
+""",
+"SEND_INFO":"""
+
+NOTA:
+Usted necesita definir o establecer su lugar de origen o ruta la cual es un dato fundamental para empesar a usar la App espero que pueda configurar su ruta origen la cual es la misma que viajar localmente
+
+/ruta_origen
+/ruta_destino
+
+La cual es la ruta que deseamos movernos ya sea localmente en la misma ciudad.
+""",
 
 }
 

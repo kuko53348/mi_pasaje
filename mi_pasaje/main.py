@@ -70,16 +70,69 @@ data_buttons = {
 }
 
 #=========================== DATABASE
-def check_data_exist(message):
+def check_data_exist(message,return_just_data: bool=False):
     data_returned = check_user_in_database(message=message)
 
     if data_returned:
         tmp_returned = data_returned[1][0]
 
+
+
         message_formated = library_lenguage.read_header(data='CLIENT_EXIT')
         message_formated = message_formated.replace('TYPE_USER',tmp_returned[0])
         message_formated = message_formated.replace('TYPE_NAME',tmp_returned[2])
         message_formated = message_formated.replace('TYPE_NUMBER',tmp_returned[5])
+        message_formated = message_formated.replace('TYPE_ORIGIN',tmp_returned[7])
+        message_formated = message_formated.replace('TYPE_DESTINY',tmp_returned[8])
+
+        if tmp_returned[0] == "Conductor":
+            new_connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+            fided_data = mysqlite_db.sqlite_find_by_name(
+                                                        connected=new_connection_db,
+                                                        tableName='Drivers_Users',
+                                                        columnName='id_account', # <=== check by id
+                                                        name=message
+                                                        )
+            tmp_returned_driver = fided_data[0]
+
+            # Return just all real data to check
+            if return_just_data:
+                return tmp_returned_driver
+
+            message_formated = library_lenguage.read_header(data='CLIENT_EXIT')
+
+            message_formated = message_formated.replace('TYPE_USER',tmp_returned_driver[0])
+            message_formated = message_formated.replace('TYPE_NAME',tmp_returned_driver[2])
+            message_formated = message_formated.replace('TYPE_NUMBER',tmp_returned_driver[5])
+            message_formated = message_formated.replace('TYPE_ORIGIN',tmp_returned_driver[7])
+            message_formated = message_formated.replace('TYPE_DESTINY',tmp_returned_driver[8])
+
+
+            return data_returned ,message_formated
+
+        if tmp_returned[0] == "Cliente":
+            new_connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+            fided_data = mysqlite_db.sqlite_find_by_name(
+                                                        connected=new_connection_db,
+                                                        tableName='Clients_Users',
+                                                        columnName='id_account', # <=== check by id
+                                                        name=message
+                                                        )
+            tmp_returned_driver = fided_data[0]
+
+            # Return just all real data to check
+            if return_just_data:
+                return tmp_returned_driver
+
+            message_formated = library_lenguage.read_header(data='CLIENT_EXIT')
+
+            message_formated = message_formated.replace('TYPE_USER',tmp_returned_driver[0])
+            message_formated = message_formated.replace('TYPE_NAME',tmp_returned_driver[2])
+            message_formated = message_formated.replace('TYPE_NUMBER',tmp_returned_driver[5])
+            message_formated = message_formated.replace('TYPE_ORIGIN',tmp_returned_driver[7])
+            message_formated = message_formated.replace('TYPE_DESTINY',tmp_returned_driver[8])
+
+            return data_returned ,message_formated
 
         return data_returned ,message_formated
     else:
@@ -358,16 +411,27 @@ def all_messages(message):
                     )
     elif 'Viajar ahora' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
-        tele_bot.tele_buttons(
-                    bot = bot,
-                    message_id=MESSAGE_ID,
-                    key_dict_buttons='Viajar ahora',
-                    dict_buttons=data_buttons,
-                    row_number=3,
-                    message=f"Bienvenido al menu de {MESSAGE}",
-                    # resize=True,
-                    # show_keyboard=False,
-                    )
+
+        message_formated = check_data_exist(message=MESSAGE_ID,return_just_data=True)
+        if not bool(message_formated[0]):
+            message_formated = library_lenguage.read_header(data='NOTA')
+            tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+        else:
+            if message_formated[7] == "False":
+                message_formated = library_lenguage.read_header(data='SEND_INFO')
+                tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+            else:
+                tele_bot.tele_buttons(
+                        bot = bot,
+                        message_id=MESSAGE_ID,
+                        key_dict_buttons='Viajar ahora',
+                        dict_buttons=data_buttons,
+                        row_number=3,
+                        message=f"Bienvenido al menu de {MESSAGE}",
+                        # resize=True,
+                        # show_keyboard=False,
+                        )
     elif 'Registrarse como Conductor' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
 
@@ -474,7 +538,7 @@ def all_messages(message):
         message_formated = f'Cantidad de votos: {"320"}\n\nVotos:\n\nPersonas que le gustan la App {"150"}\nPersonas que no les gusta: {"25"}\n\n'
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-    elif 'Ruta salida ?' == MESSAGE or 'Ruta En mi localidad' == MESSAGE:
+    elif 'Ruta salida ?' == MESSAGE or 'Ruta En mi localidad' == MESSAGE or '/ruta_origen' == MESSAGE:
         data_returned = check_user_in_database(message=MESSAGE_ID)
 
         if not data_returned:
@@ -486,7 +550,7 @@ def all_messages(message):
             tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
             # SET LOCATION
 
-    elif 'Ruta destino ?' == MESSAGE:
+    elif 'Ruta destino ?' == MESSAGE or '/ruta_destino' == MESSAGE:
         data_returned = check_user_in_database(message=MESSAGE_ID)
 
         if not data_returned:
@@ -502,6 +566,18 @@ def all_messages(message):
         ''' We create a start button '''
         message_formated = library_lenguage.read_header(data='DRIVER_CAR')
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+    elif 'Mi informacion' == MESSAGE or 'Mostrar informacion de mi Ruta' == MESSAGE: # will capture text of press buttons
+        # CHECK IF DATA EXIST
+        data_returned , message_formated = check_data_exist(message=MESSAGE_ID)
+
+        if data_returned:
+            message_formated = f'Tiene una cuenta registrada en la plataforma:\n{message_formated}'
+            tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+        else:
+            message_formated = library_lenguage.read_header(data='NOTA')
+            tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
 
     elif '/users' == MESSAGE: # will capture text of press buttons
         data_returned = check_user_in_database(message=MESSAGE_ID)
