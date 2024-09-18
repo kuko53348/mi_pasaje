@@ -308,7 +308,6 @@ NOTA:
 Usted necesita definir o establecer su lugar de origen o ruta la cual es un dato fundamental para empesar a usar la App espero que pueda configurar su ruta origen la cual es la misma que viajar localmente
 
 /ruta_origen
-/ruta_destino
 
 La cual es la ruta que deseamos movernos ya sea localmente en la misma ciudad.
 """,
