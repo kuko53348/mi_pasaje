@@ -175,7 +175,7 @@ Ingrese correctamente su movil o telefono fijo, con el cual el cliente que lo so
 Ejemplo:
 
 Movil: +5358335521
- Fijo: +45335521
+ 📞 : +45335521
 """,
 'DRIVER_NAME':"""
 NOTA:
@@ -199,7 +199,7 @@ Ingrese correctamente su movil o telefono fijo, con el cual el Conductor que lo 
 Ejemplo:
 
 Movil: +5358335521
- Fijo: +45335521
+ 📞 : +45335521
 
 """,
 
@@ -234,6 +234,33 @@ Los modelos pueden ajustarse en futuras versiones, por el momento disponemos con
 >> [+] - /Camionetas
 
 Modelos actuales existentes.
+""",
+"CLIENT_EXIT_LAS_CONFIG":"""
+NOTA:
+Usted Tiene una cuenta asociada a la App solo se permiten 1 cuenta por Usuarios porfavor en caso de eliminar la cuenta anterior escriba directo al administrador y solicite el cambio o eliminacion de la cuenta existente.
+Solo queda la ultima configuracion:
+
+/cual_es_mi_ruta
+
+Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
+
+""",
+"CLIENT_EXIT":"""
+NOTA:
+Usted Tiene una cuenta asociada a la App solo se permiten 1 cuenta por Usuarios porfavor en caso de eliminar la cuenta anterior escriba directo al administrador y solicite el cambio o eliminacion de la cuenta existente.
+
+Registrado como:\t\tTYPE_USER
+Nombre:\t\tTYPE_NAME
+Movil:\t\tTYPE_NUMBER
+
+NOTA:
+
+Solo queda la ultima configuracion:
+
+/cual_es_mi_ruta
+
+Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
+
 """,
 "CLIENT_REGISTER":"""
 

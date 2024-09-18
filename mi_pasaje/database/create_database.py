@@ -275,66 +275,52 @@ if __name__ == '__main__':
 
 
 
-    for tmp_municipios in all_citys.keys():
-        # time.sleep(1)
+    # for tmp_municipios in all_citys.keys():
+    #     # time.sleep(1)
 
-        for tmp_city in all_citys.get(tmp_municipios):
-            # time.sleep(0.1)
-            CreateTableDatabase(
-                            hosting=Server,
-                            namedatabase=NameDataBase,
-                            user=Username,
-                            password=Password,
+    #     for tmp_city in all_citys.get(tmp_municipios):
+    #         # time.sleep(0.1)
+    #         CreateTableDatabase(
+    #                         hosting=Server,
+    #                         namedatabase=NameDataBase,
+    #                         user=Username,
+    #                         password=Password,
 
-                            tableName= tmp_city ,
+    #                         tableName= tmp_city ,
 
-                            colums={
-                                     'id_acc':'TEXT',
-                                  'user_name':'TEXT',
-                                   'telegram':'TEXT',
-                                      'phone':'TEXT',
-                               'car_capacity':'TEXT',
-                                   'time_acc':'TEXT',
-                                'photo_trans':'TEXT',
-                                'origin_city':'TEXT',
-                               'destiny_city':'TEXT',
-                            'local_municipal':'TEXT', # sTrue False
-                                    }
-                            )
+    #                         colums={
+    #                                  'id_acc':'TEXT',
+    #                               'user_name':'TEXT',
+    #                                'telegram':'TEXT',
+    #                                   'phone':'TEXT',
+    #                            'car_capacity':'TEXT',
+    #                                'time_acc':'TEXT',
+    #                             'photo_trans':'TEXT',
+    #                             'origin_city':'TEXT',
+    #                            'destiny_city':'TEXT',
+    #                               'loca_city':'TEXT', # sTrue False
+    #                                 }
+    #                         )
     CreateTableDatabase(
                     hosting=Server,
                     namedatabase=NameDataBase,
                     user=Username,
                     password=Password,
 
-                    tableName='__DumpAllUsers',
+                    tableName='All_Users',
 
                     colums={
-                             'id_acc':'TEXT',
-                          'user_name':'TEXT',
-                           'telegram':'TEXT',
-                              'phone':'TEXT',
-                              'place':'TEXT',
-                           'time_acc':'TEXT',
-                               'type':'TEXT',
-                            }
-                    )
-
-    CreateTableDatabase(
-                    hosting=Server,
-                    namedatabase=NameDataBase,
-                    user=Username,
-                    password=Password,
-
-                    tableName='__Client',
-
-                    colums={
-                             'id_acc':'TEXT',
-                          'user_name':'TEXT',
-                           'telegram':'TEXT',
-                              'phone':'TEXT',
-                              'place':'TEXT',
-                           'time_acc':'TEXT',
+                                   'type_acc':'TEXT', # client / driver
+                                 'id_account':'TEXT',
+                                  'real_name':'TEXT',
+                               'name_account':'TEXT',
+                              'telegram_name':'TEXT',
+                               'phone_number':'TEXT',
+                              'time_creation':'TEXT',
+                               'origin_local':'TEXT',
+                              'destiny_route':'TEXT',
+                         'transport_capacity':'TEXT', # False True
+                            'photo_transport':'TEXT', # False True
                             }
                     )
     CreateTableDatabase(
@@ -343,17 +329,78 @@ if __name__ == '__main__':
                     user=Username,
                     password=Password,
 
-                    tableName='__Chofer',
+                    tableName='Clients_Users',
 
                     colums={
-                             'id_acc':'TEXT',
-                          'user_name':'TEXT',
-                           'telegram':'TEXT',
-                              'phone':'TEXT',
-                              'place':'TEXT',
-                           'time_acc':'TEXT',
+                                   'type_acc':'TEXT', # client / driver
+                                 'id_account':'TEXT',
+                                  'real_name':'TEXT',
+                               'name_account':'TEXT',
+                              'telegram_name':'TEXT',
+                               'phone_number':'TEXT',
+                              'time_creation':'TEXT',
+                               'origin_local':'TEXT',
+                              'destiny_route':'TEXT',
+                         'transport_capacity':'TEXT', # False True
+                            'photo_transport':'TEXT', # False True
                             }
                     )
+    CreateTableDatabase(
+                    hosting=Server,
+                    namedatabase=NameDataBase,
+                    user=Username,
+                    password=Password,
+
+                    tableName='Drivers_Users',
+
+                    colums={
+                                   'type_acc':'TEXT', # client / driver
+                                 'id_account':'TEXT',
+                                  'real_name':'TEXT',
+                               'name_account':'TEXT',
+                              'telegram_name':'TEXT',
+                               'phone_number':'TEXT',
+                              'time_creation':'TEXT',
+                               'origin_local':'TEXT',
+                              'destiny_route':'TEXT',
+                         'transport_capacity':'TEXT', # False True
+                            'photo_transport':'TEXT', # False True
+                            }
+                    )
+    # CreateTableDatabase(
+    #                 hosting=Server,
+    #                 namedatabase=NameDataBase,
+    #                 user=Username,
+    #                 password=Password,
+
+    #                 tableName='__Client',
+
+    #                 colums={
+    #                          'id_acc':'TEXT',
+    #                       'user_name':'TEXT',
+    #                        'telegram':'TEXT',
+    #                           'phone':'TEXT',
+    #                           'place':'TEXT',
+    #                        'time_acc':'TEXT',
+    #                         }
+    #                 )
+    # CreateTableDatabase(
+    #                 hosting=Server,
+    #                 namedatabase=NameDataBase,
+    #                 user=Username,
+    #                 password=Password,
+
+    #                 tableName='__Chofer',
+
+    #                 colums={
+    #                          'id_acc':'TEXT',
+    #                       'user_name':'TEXT',
+    #                        'telegram':'TEXT',
+    #                           'phone':'TEXT',
+    #                           'place':'TEXT',
+    #                        'time_acc':'TEXT',
+    #                         }
+    #                 )
     #
     #
     # eraseTableDatabase(

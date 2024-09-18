@@ -6,7 +6,7 @@ from core import library_lenguage
 from core import library_sqlite
 
 # bot de prueba
-bot = telebot.TeleBot(token="6636435110:AAEEbWZ9v_EhT_dDbzZvfTUX6gufLBEbVto")
+bot = telebot.TeleBot(token="7140060249:AAFt5XKfd4NY0U98y_FkaIjTSP75XlVf26U")
 
 # bot original
 # bot = telebot.TeleBot(token="7519838417:AAEgpcGFQCbHjuVNP14i2V02Bm0Zfa0cI2A")
@@ -20,6 +20,7 @@ bot = telebot.TeleBot(token="6636435110:AAEEbWZ9v_EhT_dDbzZvfTUX6gufLBEbVto")
 # ngrock HT3MVPEWGNABYMW3IS3CSOPOIUBCNTJG
 #
 #
+
 client_registered: dict ={}
 
 data_buttons = {
@@ -49,10 +50,10 @@ data_buttons = {
         'Atras',
     ],
     'Configuracion': [
-        'Calificame', '', '',
-        'Unirse al grupo', 'Modelos vehiculos', '',
-        'Total de votos', 'Version App', 'Registrarse',
-        'Atras'
+        'Calificame', 'Registrarse', '',
+        'Unirse al grupo', '','',
+        'Modelos vehiculos', 'Version App', '',
+        'Total de votos','Atras'
     ],
     'Viajar ahora': [
         'Coche_tradicional',
@@ -68,8 +69,59 @@ data_buttons = {
     ],
 }
 
+#=========================== DATABASE
+def check_data_exist(message):
+    data_returned = check_user_in_database(message=message)
+
+    if data_returned:
+        tmp_returned = data_returned[1][0]
+
+        message_formated = library_lenguage.read_header(data='CLIENT_EXIT')
+        message_formated = message_formated.replace('TYPE_USER',tmp_returned[0])
+        message_formated = message_formated.replace('TYPE_NAME',tmp_returned[2])
+        message_formated = message_formated.replace('TYPE_NUMBER',tmp_returned[5])
+
+        return data_returned ,message_formated
+    else:
+
+        return data_returned , False
+
+def check_user_in_database(message):
+    connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database', '.mi_botella_database.db'))
+    fided_data = mysqlite_db.sqlite_find_by_name(
+                                                connected=connection_db,
+                                                tableName='All_Users',
+                                                columnName='id_account', # <=== check by id
+                                                name=message
+                                                )
+
+    if fided_data:
+        return True ,fided_data
+    else:
+        return False
+
+
+def update_database(
+                    table_name: str = "",
+                    change_column: str = "",
+                    data_old: str = "",
+                    data_to_update: str = "",
+                    ):
+
+    connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database', '.mi_botella_database.db'))
+    update_data = mysqlite_db.sqlite_update_data(
+                                                    connected=connection_db,
+                                                    tableName=table_name,
+                                                    changeData=(change_column, data_old),   # get data
+                                                    byData=(change_column, data_to_update), # change data
+    )
+    # print('====================')
+    # print(f'[+] table_name: {table_name} change_column {change_column}')
+    # print(f'[+] old {data_old} new {data_to_update}')
+    # print('====================')
 
 #=========================== CLIENT
+
 def client_number(message):
     tmp_message = message.text
     # print(f'El numero ingresado es: {tmp_message}:')
@@ -85,6 +137,55 @@ def client_number(message):
     var_tmp = bot.send_message(message.chat.id, message_formated)
 
     # SET DATA IN MYSQL
+    """
+    CONPOSITATION OF DATABASE:
+
+                   'type_acc':'TEXT', # client / driver
+                 'id_account':'TEXT',
+                  'real_name':'TEXT',
+               'name_account':'TEXT',
+              'telegram_name':'TEXT',
+               'phone_number':'TEXT',
+              'time_creation':'TEXT',
+               'origin_local':'TEXT',
+              'destiny_route':'TEXT',
+         'transport_capacity':'TEXT', # False True
+            'photo_transport':'TEXT', # False True
+    """
+    connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+    mysqlite_db.sqlite_write_data(
+                                    connected=connection_db,
+                                    tableName='Clients_Users',
+                                  columnValue=(
+                                               tmp_data.get('type'), # type_acc             # client / driver
+                                 message.json.get('from').get('id'), # id_account
+                                               tmp_data.get('name'), # real_name
+                           message.json.get('from').get('username'), # name_account
+                         message.json.get('from').get('first_name'), # telegram_name
+                                             tmp_data.get('number'), # phone_number
+                                                            'False', # time_creation        # False True
+                                                            'False', # origin_local         # False True
+                                                            'False', # destiny_route        # False True
+                                                            'False', # transport_capacity   # False True
+                                                            'False', # photo_transport      # False True
+                                    ))
+    connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+    mysqlite_db.sqlite_write_data(
+                                    connected=connection_db,
+                                    tableName='All_Users',
+                                  columnValue=(
+                                               tmp_data.get('type'), # type_acc             # client / driver
+                                 message.json.get('from').get('id'), # id_account
+                                               tmp_data.get('name'), # real_name
+                           message.json.get('from').get('username'), # name_account
+                         message.json.get('from').get('first_name'), # telegram_name
+                                             tmp_data.get('number'), # phone_number
+                                                            'False', # time_creation        # False True
+                                                            'False', # origin_local         # False True
+                                                            'False', # destiny_route        # False True
+                                                            'False', # transport_capacity   # False True
+                                                            'False', # photo_transport      # False True
+                                    ))
     print('CLIENT: ',client_registered[message.chat.id])
 
     del client_registered[message.chat.id]
@@ -121,6 +222,42 @@ def driver_capacity(message):
     var_tmp = bot.send_message(message.chat.id, message_formated)
 
     # SET DATA IN MYSQL
+    connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+    mysqlite_db.sqlite_write_data(
+                                            connected=connection_db,
+                                            tableName='Drivers_Users',
+                                          columnValue=(
+                                               tmp_data.get('type'), # type_acc             # client / driver
+                                 message.json.get('from').get('id'), # id_account
+                                               tmp_data.get('name'), # real_name
+                           message.json.get('from').get('username'), # name_account
+                         message.json.get('from').get('first_name'), # telegram_name
+                                             tmp_data.get('number'), # phone_number
+                                                            'False', # time_creation        # False True
+                                                            'False', # origin_local         # False True
+                                                            'False', # destiny_route        # False True
+                                           tmp_data.get('capacity'), # transport_capacity   # False True
+                                                            'False', # photo_transport      # False True
+                                    ))
+
+    connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+    mysqlite_db.sqlite_write_data(
+                                            connected=connection_db,
+                                            tableName='All_Users',
+                                          columnValue=(
+                                               tmp_data.get('type'), # type_acc             # client / driver
+                                 message.json.get('from').get('id'), # id_account
+                                               tmp_data.get('name'), # real_name
+                           message.json.get('from').get('username'), # name_account
+                         message.json.get('from').get('first_name'), # telegram_name
+                                             tmp_data.get('number'), # phone_number
+                                                            'False', # time_creation        # False True
+                                                            'False', # origin_local         # False True
+                                                            'False', # destiny_route        # False True
+                                           tmp_data.get('capacity'), # transport_capacity   # False True
+                                                            'False', # photo_transport      # False True
+                                    ))
+
     print('DRIVER: ',client_registered[message.chat.id])
 
     del client_registered[message.chat.id]
@@ -233,30 +370,40 @@ def all_messages(message):
                     )
     elif 'Registrarse como Conductor' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
-        tele_bot.tele_buttons(
-                    bot = bot,
-                    message_id=MESSAGE_ID,
-                    key_dict_buttons='Registrarse como Conductor',
-                    dict_buttons=data_buttons,
-                    row_number=3,
-                    message=f"Bienvenido al menu de {MESSAGE}",
-                    # resize=True,
-                    # show_keyboard=False,
-                    )
+
+        data_returned = check_user_in_database(message=MESSAGE_ID)
+        if data_returned:
+            message_formated = library_lenguage.read_header(data='CLIENT_EXIT_LAS_CONFIG')
+            tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+        else:
+            tele_bot.tele_buttons(
+                        bot = bot,
+                        message_id=MESSAGE_ID,
+                        key_dict_buttons='Registrarse como Conductor',
+                        dict_buttons=data_buttons,
+                        row_number=3,
+                        message=f"Bienvenido al menu de {MESSAGE}",
+                        # resize=True,
+                        # show_keyboard=False,
+                        )
     elif 'Registrarse como Viajero' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
+        data_returned = check_user_in_database(message=MESSAGE_ID)
+        if data_returned:
+            message_formated = library_lenguage.read_header(data='CLIENT_EXIT_LAS_CONFIG')
+            tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-
-        tele_bot.tele_buttons(
-                    bot = bot,
-                    message_id=MESSAGE_ID,
-                    key_dict_buttons='Registrarse como Viajero',
-                    dict_buttons=data_buttons,
-                    row_number=3,
-                    message=f"Bienvenido al menu de {MESSAGE}",
-                    # resize=True,
-                    # show_keyboard=False,
-                    )
+        else:
+            tele_bot.tele_buttons(
+                        bot = bot,
+                        message_id=MESSAGE_ID,
+                        key_dict_buttons='Registrarse como Viajero',
+                        dict_buttons=data_buttons,
+                        row_number=3,
+                        message=f"Bienvenido al menu de {MESSAGE}",
+                        # resize=True,
+                        # show_keyboard=False,
+                        )
 
     elif 'Establecer Ruta' == MESSAGE or '/cual_es_mi_ruta' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
@@ -276,50 +423,41 @@ def all_messages(message):
             message_formated = library_lenguage.read_header(data='SET_HELP')
             tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-    elif '/set_client' == MESSAGE.split(':')[0] or 'Comenzar Registro Viajero' == MESSAGE: # will capture text of press buttons
-        bot.send_chat_action(message.chat.id, 'typing')
-        message_formated = library_lenguage.read_header(data='CLIENT_NAME')
+    elif '/set_client' == MESSAGE or 'Comenzar Registro Viajero' == MESSAGE: # will capture text of press buttons
 
-        var_tmp = bot.send_message(message.chat.id, message_formated)
-        bot.register_next_step_handler(var_tmp,
-                                        client_name)
+        # CHECK IF DATA EXIST
+        data_returned , message_formated = check_data_exist(message=MESSAGE_ID)
 
-    elif '/set_driver' == MESSAGE.split(':')[0] or 'Comenzar Registro Conductor' == MESSAGE: # will capture text of press buttons
-        bot.send_chat_action(message.chat.id, 'typing')
-        message_formated = library_lenguage.read_header(data='DRIVER_NAME')
+        if data_returned:
+            message_formated = f'Tiene una cuenta registrada en la plataforma:\n{message_formated}'
+            tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-        var_tmp = bot.send_message(message.chat.id, message_formated)
-        bot.register_next_step_handler(var_tmp,
-                                        driver_name)
+        else:
+            bot.send_chat_action(message.chat.id, 'typing')
+            message_formated = library_lenguage.read_header(data='CLIENT_NAME')
+
+            var_tmp = bot.send_message(message.chat.id, message_formated)
+            bot.register_next_step_handler(var_tmp,
+                                            client_name)
+
+    elif '/set_driver' == MESSAGE or 'Comenzar Registro Conductor' == MESSAGE: # will capture text of press buttons
+
+        # CHECK IF DATA EXIST
+        data_returned , message_formated = check_data_exist(message=MESSAGE_ID)
+
+        if data_returned:
+            message_formated = f'Tiene una cuenta registrada en la plataforma:\n{message_formated}'
+            tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+        else:
+            bot.send_chat_action(message.chat.id, 'typing')
+            message_formated = library_lenguage.read_header(data='DRIVER_NAME')
+
+            var_tmp = bot.send_message(message.chat.id, message_formated)
+            bot.register_next_step_handler(var_tmp,
+                                            driver_name)
     # ================================================= PLACE OR LOCATION
-    elif 'Donde estoy ahora?' == MESSAGE:
-        message_formated = library_lenguage.read_header(data='ORIGIN_PLACE')
-        tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
-        # SET LOCATION
-
-    elif 'Hacia donde voy?' == MESSAGE:
-        message_formated = library_lenguage.read_header(data='FINISH_PLACE')
-        tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
-        # SET LOCATION
-
-    elif 'Ruta salida ?' == MESSAGE or 'Ruta En mi localidad' == MESSAGE:
-        message_formated = library_lenguage.read_header(data='ORIGIN_PLACE')
-        tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
-        # SET LOCATION
-
-    elif 'Ruta destino ?' == MESSAGE:
-        message_formated = library_lenguage.read_header(data='FINISH_PLACE')
-        tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
-        # SET LOCATION
-
-    # ================================================= ADMIN
-
-    elif 'Modelos vehiculos' == MESSAGE: # will capture text of press buttons
-        ''' We create a start button '''
-        message_formated = library_lenguage.read_header(data='DRIVER_CAR')
-        tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
-
-    elif 'Version App' == MESSAGE or '/app_version' == MESSAGE: # will capture text of press buttons
+    elif '/app_version' == MESSAGE or 'Version App' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         with open('CHANGELOG.md' , 'r') as f:
             message_formated = f.read()
@@ -336,41 +474,181 @@ def all_messages(message):
         message_formated = f'Cantidad de votos: {"320"}\n\nVotos:\n\nPersonas que le gustan la App {"150"}\nPersonas que no les gusta: {"25"}\n\n'
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
+    elif 'Ruta salida ?' == MESSAGE or 'Ruta En mi localidad' == MESSAGE:
+        data_returned = check_user_in_database(message=MESSAGE_ID)
+
+        if not data_returned:
+            message_formated = library_lenguage.read_header(data='NOTA')
+            tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+        else:
+            message_formated = library_lenguage.read_header(data='ORIGIN_PLACE')
+            tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
+            # SET LOCATION
+
+    elif 'Ruta destino ?' == MESSAGE:
+        data_returned = check_user_in_database(message=MESSAGE_ID)
+
+        if not data_returned:
+            message_formated = library_lenguage.read_header(data='NOTA')
+            tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+        else:
+            message_formated = library_lenguage.read_header(data='FINISH_PLACE')
+            tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
+            # SET LOCATION
+    # ================================================= ADMIN
+    elif 'Modelos vehiculos' == MESSAGE: # will capture text of press buttons
+        ''' We create a start button '''
+        message_formated = library_lenguage.read_header(data='DRIVER_CAR')
+        tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+    elif '/users' == MESSAGE: # will capture text of press buttons
+        data_returned = check_user_in_database(message=MESSAGE_ID)
+
+        print(data_returned,'<<<<<<<<<<<<<<<<<<<<<')
     else:
         # check_name = all_citys.get(MESSAGE,'known')
 
         if MESSAGE.startswith('/__'):
 
-            message_formated = library_lenguage.read_header(data='CHECK_CITYS')
-            original_string = MESSAGE.strip('/__')
+            data_returned = check_user_in_database(message=MESSAGE_ID)
 
-            if original_string in message_formated:
-                tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=f"Se ha actualizado en la base de datos lugar destino donde va a viajar: \n\nUsted esta viajando desde: {original_string} \n\nUsted puede consultar en datos, que tenga un buen viaje...")
-                print(f"""
-                    Telegram: @{message.json.get('from').get('username')}
-                    ID: {message.json.get('from').get('id')}
-                    usuario: {message.json.get('from').get('first_name')}
-                    texto: {message.json.get('text')}
-                    """)
+            if not data_returned:
+                message_formated = library_lenguage.read_header(data='NOTA')
+                tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
             else:
-                tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message='/ayuda_usuario' )
 
-        else:
-            if MESSAGE.startswith('/_'):
                 message_formated = library_lenguage.read_header(data='CHECK_CITYS')
                 original_string = MESSAGE.strip('/__')
 
                 if original_string in message_formated:
+                    tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=f"Se ha actualizado en la base de datos lugar destino donde va a viajar: \n\nUsted esta viajando desde: {original_string} \n\nUsted puede consultar en datos, que tenga un buen viaje...")
 
-                    tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=f"Se ha actualizado en la base de datos lugar actual donde se encuentra: \n\nUsted esta viajando desde: {original_string} \n\nUsted puede consultar en datos, que tenga un buen viaje...")
-                    print(f"""
-                        Telegram: @{message.json.get('from').get('username')}
-                        ID: {message.json.get('from').get('id')}
-                        usuario: {message.json.get('from').get('first_name')}
-                        texto: {message.json.get('text')}
-                        """)
+                    # UPDATE DESTINY ROUTE
+                    connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+                    fided_data = mysqlite_db.sqlite_find_by_name(connected=connection_db,tableName='All_Users',columnName='id_account',name=MESSAGE_ID)
+
+                    type_account  = fided_data[0][0] # CLient / Driver
+
+                    # origin_route  = fided_data[0][7]
+                    # destiny_route = fided_data[0][8]
+
+                    # # cliente
+                    # print('client: //////////////////// ',type_account,'<<<<<< stype')
+                    # print('client: //////////////////// ',origin_route,"origin")
+                    # print('client: //////////////////// ',destiny_route,"destiny")
+
+                    if type_account == 'Cliente':
+                        connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+                        fided_data = mysqlite_db.sqlite_find_by_name(connected=connection_db,tableName='CLients_Users',columnName='id_account',name=MESSAGE_ID)
+                        destiny_route = fided_data[0][8]
+
+                        update_database(
+                                        table_name='Clients_Users',
+                                        change_column='destiny_route',
+                                        data_old=destiny_route,
+                                        data_to_update=original_string,
+                                        )
+                    elif type_account == 'Conductor':
+                        connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+                        fided_data = mysqlite_db.sqlite_find_by_name(connected=connection_db,tableName='Drivers_Users',columnName='id_account',name=MESSAGE_ID)
+                        destiny_route = fided_data[0][8]
+
+                        update_database(
+                                        table_name='Drivers_Users',
+                                        change_column='destiny_route',
+                                        data_old=destiny_route,
+                                        data_to_update=original_string,
+                                        )
+
+
                 else:
                     tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message='/ayuda_usuario' )
+
+        else:
+            if MESSAGE.startswith('/_'):
+
+                data_returned = check_user_in_database(message=MESSAGE_ID)
+
+                if not data_returned:
+                    message_formated = library_lenguage.read_header(data='NOTA')
+                    tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+                else:
+
+                    message_formated = library_lenguage.read_header(data='CHECK_CITYS')
+                    original_string = MESSAGE.strip('/_')
+
+                    if original_string in message_formated:
+
+                        tele_bot.send_message(
+                                                bot=bot,
+                                                type_msg='message',
+                                                message_id=MESSAGE_ID,
+                                                message=f"Se ha actualizado en la base de datos lugar actual donde se encuentra: \n\nUsted esta viajando desde: {original_string} \n\nUsted puede consultar en datos, que tenga un buen viaje..."
+                                                )
+
+                        # UPDATE SOURCE ROUTE
+                        connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+                        fided_data = mysqlite_db.sqlite_find_by_name(connected=connection_db,tableName='All_Users',columnName='id_account',name=MESSAGE_ID)
+
+                        type_account  = fided_data[0][0] # CLient / Driver
+
+                        # origin_route  = fided_data[0][7]
+                        # destiny_route = fided_data[0][8]
+                        # # cliente
+                        # print('client: //////////////////// ',type_account,'<<<<<< stype')
+                        # print('client: //////////////////// ',origin_route,"origin")
+                        # print('client: //////////////////// ',destiny_route,"destiny")
+
+                        if type_account == 'Cliente':
+                            connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+                            fided_data = mysqlite_db.sqlite_find_by_name(connected=connection_db,tableName='CLients_Users',columnName='id_account',name=MESSAGE_ID)
+                            type_account  = fided_data[0][0] # CLient / Driver
+                            origin_route  = fided_data[0][7]
+                            destiny_route = fided_data[0][8]
+
+                            update_database(
+                                            table_name='Clients_Users',
+                                            change_column='origin_local',
+                                            data_old=origin_route,
+                                            data_to_update=original_string,
+                                            )
+                            update_database(
+                                            table_name='Clients_Users',
+                                            change_column='destiny_route',
+                                            data_old=destiny_route,
+                                            data_to_update=original_string,
+                                            )
+                        elif type_account == 'Conductor':
+                            connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+                            fided_data = mysqlite_db.sqlite_find_by_name(connected=connection_db,tableName='Drivers_Users',columnName='id_account',name=MESSAGE_ID)
+                            type_account  = fided_data[0][0] # CLient / Driver
+                            origin_route  = fided_data[0][7]
+                            destiny_route = fided_data[0][8]
+
+                            update_database(
+                                            table_name='Drivers_Users',
+                                            change_column='origin_local',
+                                            data_old=origin_route,
+                                            data_to_update=original_string,
+                                            )
+                            update_database(
+                                            table_name='Drivers_Users',
+                                            change_column='destiny_route',
+                                            data_old=destiny_route,
+                                            data_to_update=original_string,
+                                            )
+                        # print(f"""
+                        #     Telegram: @{message.json.get('from').get('username')}
+                        #     ID: {message.json.get('from').get('id')}
+                        #     usuario: {message.json.get('from').get('first_name')}
+                        #     texto: {message.json.get('text')}
+                        #     """)
+                    else:
+                        tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message='/ayuda_usuario' )
 
 if __name__ == '__main__':
     tele_bot = library_telebot.tele_bot
@@ -378,7 +656,6 @@ if __name__ == '__main__':
 
     # Create connction to dataase
     mysqlite_db = library_sqlite.mysqlite_db
-    connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
 
     list_all_commands = {
                         'registrarse':'Registrarse como usuario o conductor',
