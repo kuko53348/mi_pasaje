@@ -1,3 +1,9 @@
+## 0.1.1 (septiembre 18, 2024)
+  - implemented check db driver and client
+  - preparing to add database
+  - added driver route
+  - Bump version to 0.1.1.
+
 ## 0.1.0 (septiembre 17, 2024)
   - organizate city
   - add granma
