@@ -228,12 +228,12 @@ Ejemplo:
 
 Los modelos pueden ajustarse en futuras versiones, por el momento disponemos con los modelos estandar para el transporte urbano comun de cuba.
 
- 🐴 - Tradicional
- 🐴 - Guaguita
- 🐴 - Planchero
- 🚲 - Bici_taxi
- 🛺 - Moto_taxi
- 🛵 - Motorina_taxi
+ 🐴 - Coche Tradicional
+ 🐴 - Coche Guaguita
+ 🐴 - Coche Planchero
+ 🚲 - Bici taxi
+ 🛺 - Moto taxi
+ 🛵 - Motorina taxi
  🚕 - Automobil
  🛻 - Camionetas
  🚚 - Camiones

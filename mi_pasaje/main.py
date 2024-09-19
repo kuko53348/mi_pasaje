@@ -6,10 +6,10 @@ from core import library_lenguage
 from core import library_sqlite
 
 # bot de original
-bot = telebot.TeleBot(token="7140060249:AAFt5XKfd4NY0U98y_FkaIjTSP75XlVf26U")
+# bot = telebot.TeleBot(token="7140060249:AAFt5XKfd4NY0U98y_FkaIjTSP75XlVf26U")
 
 # bot prueba chat0gpt
-# bot = telebot.TeleBot(token="6481554552:AAFrjGgpIykDhzZLFcr0rGqqUb21xCLKC58")
+bot = telebot.TeleBot(token="6481554552:AAFrjGgpIykDhzZLFcr0rGqqUb21xCLKC58")
 
 # my_token
 ## 2m4xn2jNiqxdWoTpQI6yePycVtL_6QhVhZnn1ykjEVptKTKSD
@@ -58,15 +58,15 @@ data_buttons = {
         '🗳 Total de votos','◀️ Atras'
     ],
     '🏁 Viajar ahora 🏁': [
-        'Coche_tradicional',
-        'Coche_Guaguita',
-        'Coche_planchero',
-        'Bici_taxi',
-        'Moto_taxi',
-        'Motorina_taxi',
-        'Automobil',
-        'Camiones',
-        'Camionetas',
+        '🐴 Coche Tradicional',
+        '🐴 Coche Guaguita',
+        '🐴 Coche Carretonero',
+        '🚲 Bici Taxi',
+        '🛺 Moto Taxi',
+        '🛵 Motorina',
+        '🚕 Automobil',
+        '🛻 Camionetas',
+        '🚚  Camiones',
         '💼 Mi informacion',
         '◀️ Atras',
     ],
