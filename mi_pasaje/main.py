@@ -5,11 +5,11 @@ from core import library_telebot
 from core import library_lenguage
 from core import library_sqlite
 
-# bot de prueba
+# bot de original
 bot = telebot.TeleBot(token="7140060249:AAFt5XKfd4NY0U98y_FkaIjTSP75XlVf26U")
 
-# bot original
-# bot = telebot.TeleBot(token="7519838417:AAEgpcGFQCbHjuVNP14i2V02Bm0Zfa0cI2A")
+# bot prueba chat0gpt
+# bot = telebot.TeleBot(token="6481554552:AAFrjGgpIykDhzZLFcr0rGqqUb21xCLKC58")
 
 # my_token
 ## 2m4xn2jNiqxdWoTpQI6yePycVtL_6QhVhZnn1ykjEVptKTKSD
@@ -22,40 +22,42 @@ bot = telebot.TeleBot(token="7140060249:AAFt5XKfd4NY0U98y_FkaIjTSP75XlVf26U")
 #
 
 client_registered: dict ={}
+emogics = """💼🎟🛵🛺🚕🚌🚚🚥☑️🔚🔙🏁📣🇨🇺🔽"""
 
 data_buttons = {
     'start': [
-        'Mi informacion', 'Establecer Ruta', '',
-        'Viajar ahora', '', '',
-        'Configuracion', 'Ayuda del Usuario', ''
+        '💼 Mi informacion', '📍 Establecer Ruta', '',
+        '🏁 Viajar ahora 🏁', '', '',
+        '⚙️ Configuracion', '👋 Ayuda', '',
+        # '✍️ Registrarse'
     ],
     # ========
-    'Registrarse': [
-        'Registrarse como Viajero',
-        'Registrarse como Conductor',
-        'Atras',
+    '✍️ Registrarse': [
+        '✍️ Registrarse como Viajero',
+        '🛞 Registrarse como Conductor',
+        '◀️ Atras',
     ],
-    'Registrarse como Viajero': [
-        'Comenzar Registro Viajero', '', '',
-        'Atras'
+    '✍️ Registrarse como Viajero': [
+        '⏭ Registro Viajero', '', '',
+        '◀️ Atras'
     ],
-    'Registrarse como Conductor': [
-        'Comenzar Registro Conductor', '', '',
-        'Atras'
+    '🛞 Registrarse como Conductor': [
+        '⏭ Registro Conductor', '', '',
+        '◀️ Atras'
     ],
-    'Establecer Ruta': [
-        'Mostrar informacion de mi Ruta', '', '',
-        'Ruta salida ?', 'Ruta destino ?', '',
-        'Ruta En mi localidad', '', '',
-        'Atras',
+    '📍 Establecer Ruta': [
+        '💼 Mostrar informacion de mi Ruta', '', '',
+        '↗️ Ruta de salida', '↘️ Ruta de destino', '',
+        '🔄 Viajar en mi ciudad', '', '',
+        '◀️ Atras',
     ],
-    'Configuracion': [
-        'Calificame', 'Registrarse', '',
-        'Unirse al grupo', '','',
-        'Modelos vehiculos', 'Version App', '',
-        'Total de votos','Atras'
+    '⚙️ Configuracion': [
+        '🌟 Calificame', '✍️ Registrarse', '',
+        '👨‍👩‍👦‍👦 Unirse al grupo', '','',
+        '🏁 Modelos vehiculos', '🔄 Version App', '',
+        '🗳 Total de votos','◀️ Atras'
     ],
-    'Viajar ahora': [
+    '🏁 Viajar ahora 🏁': [
         'Coche_tradicional',
         'Coche_Guaguita',
         'Coche_planchero',
@@ -65,7 +67,8 @@ data_buttons = {
         'Automobil',
         'Camiones',
         'Camionetas',
-        'Atras',
+        '💼 Mi informacion',
+        '◀️ Atras',
     ],
 }
 
@@ -359,7 +362,7 @@ def all_messages(message):
     MESSAGE    = message.text
 
     # ===================================== MENU ================================
-    if '/start' ==  MESSAGE or 'Atras' ==  MESSAGE or  '/atras' == MESSAGE: # will capture text of press buttons
+    if '/start' ==  MESSAGE or '◀️ Atras' ==  MESSAGE or  '/atras' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         message_formated = library_lenguage.read_header(data='NOTA')
         tele_bot.tele_buttons(
@@ -373,14 +376,14 @@ def all_messages(message):
                     # show_keyboard=False,
                     )
 
-    elif '/registrarse' == MESSAGE or 'Registrarse' == MESSAGE: # will capture text of press buttons
+    elif '/registrarse' == MESSAGE or '✍️ Registrarse' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
                     message_id=MESSAGE_ID,
-                    key_dict_buttons='Registrarse',
+                    key_dict_buttons='✍️ Registrarse',
                     dict_buttons=data_buttons,
-                    row_number=2,
+                    row_number=1,
                     message=f"Bienvenido al menu de {MESSAGE}",
                     # resize=True,
                     # show_keyboard=False,
@@ -397,19 +400,19 @@ def all_messages(message):
                     # resize=True,
                     # show_keyboard=False,
                     )
-    elif 'Configuracion' == MESSAGE: # will capture text of press buttons
+    elif '⚙️ Configuracion' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
                     message_id=MESSAGE_ID,
-                    key_dict_buttons='Configuracion',
+                    key_dict_buttons='⚙️ Configuracion',
                     dict_buttons=data_buttons,
                     row_number=3,
                     message=f"Bienvenido al menu de {MESSAGE}",
                     # resize=True,
                     # show_keyboard=False,
                     )
-    elif 'Viajar ahora' == MESSAGE: # will capture text of press buttons
+    elif '🏁 Viajar ahora 🏁' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
 
         message_formated = check_data_exist(message=MESSAGE_ID,return_just_data=True)
@@ -425,14 +428,14 @@ def all_messages(message):
                 tele_bot.tele_buttons(
                         bot = bot,
                         message_id=MESSAGE_ID,
-                        key_dict_buttons='Viajar ahora',
+                        key_dict_buttons='🏁 Viajar ahora 🏁',
                         dict_buttons=data_buttons,
                         row_number=3,
                         message=f"Bienvenido al menu de {MESSAGE}",
                         # resize=True,
                         # show_keyboard=False,
                         )
-    elif 'Registrarse como Conductor' == MESSAGE: # will capture text of press buttons
+    elif '🛞 Registrarse como Conductor' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
 
         data_returned = check_user_in_database(message=MESSAGE_ID)
@@ -443,14 +446,14 @@ def all_messages(message):
             tele_bot.tele_buttons(
                         bot = bot,
                         message_id=MESSAGE_ID,
-                        key_dict_buttons='Registrarse como Conductor',
+                        key_dict_buttons='🛞 Registrarse como Conductor',
                         dict_buttons=data_buttons,
                         row_number=3,
                         message=f"Bienvenido al menu de {MESSAGE}",
                         # resize=True,
                         # show_keyboard=False,
                         )
-    elif 'Registrarse como Viajero' == MESSAGE: # will capture text of press buttons
+    elif '✍️ Registrarse como Viajero' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         data_returned = check_user_in_database(message=MESSAGE_ID)
         if data_returned:
@@ -461,7 +464,7 @@ def all_messages(message):
             tele_bot.tele_buttons(
                         bot = bot,
                         message_id=MESSAGE_ID,
-                        key_dict_buttons='Registrarse como Viajero',
+                        key_dict_buttons='✍️ Registrarse como Viajero',
                         dict_buttons=data_buttons,
                         row_number=3,
                         message=f"Bienvenido al menu de {MESSAGE}",
@@ -469,12 +472,12 @@ def all_messages(message):
                         # show_keyboard=False,
                         )
 
-    elif 'Establecer Ruta' == MESSAGE or '/cual_es_mi_ruta' == MESSAGE: # will capture text of press buttons
+    elif '📍 Establecer Ruta' == MESSAGE or '/cual_es_mi_ruta' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         tele_bot.tele_buttons(
                     bot = bot,
                     message_id=MESSAGE_ID,
-                    key_dict_buttons='Establecer Ruta',
+                    key_dict_buttons='📍 Establecer Ruta',
                     dict_buttons=data_buttons,
                     row_number=3,
                     message=f"Bienvenido al menu de {MESSAGE}",
@@ -487,7 +490,7 @@ def all_messages(message):
             message_formated = library_lenguage.read_header(data='SET_HELP')
             tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-    elif '/set_client' == MESSAGE or 'Comenzar Registro Viajero' == MESSAGE: # will capture text of press buttons
+    elif '/set_client' == MESSAGE or '⏭ Registro Viajero' == MESSAGE: # will capture text of press buttons
 
         # CHECK IF DATA EXIST
         data_returned , message_formated = check_data_exist(message=MESSAGE_ID)
@@ -504,7 +507,7 @@ def all_messages(message):
             bot.register_next_step_handler(var_tmp,
                                             client_name)
 
-    elif '/set_driver' == MESSAGE or 'Comenzar Registro Conductor' == MESSAGE: # will capture text of press buttons
+    elif '/set_driver' == MESSAGE or '⏭ Registro Conductor' == MESSAGE: # will capture text of press buttons
 
         # CHECK IF DATA EXIST
         data_returned , message_formated = check_data_exist(message=MESSAGE_ID)
@@ -521,24 +524,24 @@ def all_messages(message):
             bot.register_next_step_handler(var_tmp,
                                             driver_name)
     # ================================================= PLACE OR LOCATION
-    elif '/app_version' == MESSAGE or 'Version App' == MESSAGE: # will capture text of press buttons
+    elif '/app_version' == MESSAGE or '🔄 Version App' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         with open('CHANGELOG.md' , 'r') as f:
             message_formated = f.read()
             tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-    elif '/unirse_al_grupo' == MESSAGE or 'Unirse al grupo'  == MESSAGE: # will capture text of press buttons
+    elif '/unirse_al_grupo' == MESSAGE or '👨‍👩‍👦‍👦 Unirse al grupo'  == MESSAGE: # will capture text of press buttons
         message_formated = library_lenguage.read_header(data='GROUP')
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-    elif '/califiar_app' == MESSAGE or 'Calificame' == MESSAGE: # will capture text of press buttons
+    elif '/califiar_app' == MESSAGE or '🌟 Calificame' == MESSAGE: # will capture text of press buttons
         tele_bot.congratulation( bot=bot,message_id=MESSAGE_ID,message='Formulario')
 
     elif '/total_votos' == MESSAGE: # will capture text of press buttons
         message_formated = f'Cantidad de votos: {"320"}\n\nVotos:\n\nPersonas que le gustan la App {"150"}\nPersonas que no les gusta: {"25"}\n\n'
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-    elif 'Ruta salida ?' == MESSAGE or 'Ruta En mi localidad' == MESSAGE or '/ruta_origen' == MESSAGE:
+    elif '↗️ Ruta de salida' == MESSAGE or '🔄 Viajar en mi ciudad' == MESSAGE or '/ruta_origen' == MESSAGE:
         data_returned = check_user_in_database(message=MESSAGE_ID)
 
         if not data_returned:
@@ -550,7 +553,7 @@ def all_messages(message):
             tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
             # SET LOCATION
 
-    elif 'Ruta destino ?' == MESSAGE or '/ruta_destino' == MESSAGE:
+    elif '↘️ Ruta de destino' == MESSAGE or '/ruta_destino' == MESSAGE:
         data_returned = check_user_in_database(message=MESSAGE_ID)
 
         if not data_returned:
@@ -562,12 +565,12 @@ def all_messages(message):
             tele_bot.send_message( bot=bot, type_msg='message' ,message_id=MESSAGE_ID, message=message_formated )
             # SET LOCATION
     # ================================================= ADMIN
-    elif 'Modelos vehiculos' == MESSAGE: # will capture text of press buttons
+    elif '🏁 Modelos vehiculos' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
         message_formated = library_lenguage.read_header(data='DRIVER_CAR')
         tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-    elif 'Mi informacion' == MESSAGE or 'Mostrar informacion de mi Ruta' == MESSAGE: # will capture text of press buttons
+    elif '💼 Mi informacion' == MESSAGE or '💼 Mostrar informacion de mi Ruta' == MESSAGE: # will capture text of press buttons
         # CHECK IF DATA EXIST
         data_returned , message_formated = check_data_exist(message=MESSAGE_ID)
 

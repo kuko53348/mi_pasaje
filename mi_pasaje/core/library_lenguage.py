@@ -1,6 +1,5 @@
 message_formated = {
 'CHECK_CITYS':{
-
 'Guanes' , 'Mantua' , 'Minas_Matahambre' , 'Vinales' , 'Pinar_San_Luis' , 'S_Juan_Martinez' , 'Pinar_del_Rio' , 'Los_Palacios' , 'Consolacion_Sur' , 'La_Palma' , 'Sandino',
 'Matanzas' , 'Cardenas' , 'Marti' , 'Colon' , 'Perico' , 'Jovellanos' , 'Pedro_Betancourt' , 'Limonar' , 'Union_Reyes' , 'Cienaga_Zapata' , 'Jaguey_Grande' , 'Calimete' ,
 'Los_Arabos','Bolivia' , 'Majagua' , 'Moron' , 'Florencia' , 'Ciego_Avila' , 'Baragua' , 'Venezuela' , 'Ciro_Redondo' , 'Primero_Enero' , 'Chambas','Alquizar' , 'Artemisa' ,
@@ -16,9 +15,27 @@ message_formated = {
 'Madruga' , 'Guines' , 'Santa_Cruz_Norte' , 'Batabano' , 'Nueva_Paz' , 'Bejucal' , 'Melena_del_Sur' , 'San_Nicolas', 'Corralillo' , 'Encrucijada' , 'Santo_Domingo' , 'Ranchuelo' ,
 'Caibarien' , 'Manicaragua' , 'Cifuentes' , 'Sagua_la_Grande'},
 
-'NOTA':'📢  NOTA:\n\nUsted puede acceder a mi botella de manera gratuita. Solamente pedimos que se registre con el comando siguiente:\n\n/registrarse\n\nUsted no tiene compartirnos sus datos personales, solo le pedimos su nombre y su telefono.\nEn caso de ser conductor, si deberia contactarme personalmente.\nAl usuario: @Bodyasshole en telegram\nDespues de confirmar sus datos, seran agregado en la base de datos, totalmente GRATIS.\nEste BOT esta en fase BETA en un futuro se modificara las politicas de administracion.\npor lo demas disfrute version demo de Mi botella App...',
-    'GROUP':'Used puede compartir sus ideas y sugerencias en Nuestro grupo su grupo\n\n👉 <a href="https://t.me/+DkcqyAf0vxJhNTEx">𝙅𝙊𝙄𝙉 𝙏𝙊 𝙏𝙃𝙀 𝙂𝙍𝙊𝙐𝙋</a> 👈',
-'ORIGIN_PLACE':"""
+'NOTA':"""📢 NOTA ❗️
+Usted puede acceder a mi botella de manera gratuita. Solamente pedimos que se registre con el comando siguiente:
+
+✍️ /registrarse
+
+Usted no tiene compartirnos sus datos personales, solo le pedimos su nombre y su telefono.
+En caso de ser conductor, si deberia contactarme personalmente.
+
+Telegram:
+
+👤 @Bodyasshole
+
+Despues de confirmar sus datos, seran agregado en la base de datos, totalmente GRATIS.
+Este BOT esta en fase BETA en un futuro se modificara las politicas de administracion.""",
+
+'GROUP':"""Used puede compartir sus ideas y sugerencias en Nuestro grupo su grupo
+
+👉 <a href="https://t.me/+DkcqyAf0vxJhNTEx">𝙅𝙊𝙄𝙉 𝙏𝙊 𝙏𝙃𝙀 𝙂𝙍𝙊𝙐𝙋</a> 👈""",
+
+"ORIGIN_PLACE":"""
+
 Pinar_del_Rio:
 
 /_Guanes , /_Mantua , /_Minas_Matahambre , /_Vinales , /_Pinar_San_Luis , /_S_Juan_Martinez , /_Pinar_del_Rio , /_Los_Palacios , /_Consolacion_Sur , /_La_Palma , /_Sandino,
@@ -161,7 +178,7 @@ plazas,
 
 """,
 'DRIVER_CAPACITY':"""
-NOTA:
+📢 NOTA ❗️
 
 Escriba el numero corecto de pasajeros que dispone su vehiculo o medio de transporte ya que dependiendo su capacidad el usuario puede tener mas clara la necesidad de solicitar su servicio.
 
@@ -169,23 +186,25 @@ Ejemplo: 4
 
 """,
 'DRIVER_NUMBER':"""
-NOTA:
+📢 NOTA ❗️
 Ingrese correctamente su movil o telefono fijo, con el cual el cliente que lo solicite lo pueda llamar para poder recivir su servicio, y asi cubrir ambas necesidades.
 
 Ejemplo:
 
-Movil: +5358335521
- 📞 : +45335521
+📲  +5358335521
+☎️  +45335521
 """,
 'DRIVER_NAME':"""
-NOTA:
+📢 NOTA ❗️
+
 Ingrese su nombre real con en cual el usuario lo puede llamar, revise si ha ingresado correctamente los datos para hacer una correcta validacion de su registro.
 
 Ejemplo: Juan Augusto Lima
 
 """,
 'CLIENT_NAME':"""
-NOTA:
+📢 NOTA ❗️
+
 Ingrese su nombre real con en cual el Conductor lo puede llamar o saber como llamarlo, revise si ha ingresado correctamente los datos para hacer una correcta validacion de su registro.
 
 Ejemplo: Juan Augusto Lima
@@ -193,107 +212,110 @@ Ejemplo: Juan Augusto Lima
 """,
 
 'CLIENT_NUMBER':"""
-NOTA:
+📢 NOTA ❗️
+
 Ingrese correctamente su movil o telefono fijo, con el cual el Conductor que lo solicite lo pueda llamar al movil para poder confirmar su pedido, y asi cubrir ambas necesidades.
 
 Ejemplo:
 
-Movil: +5358335521
- 📞 : +45335521
+📲  +5358335521
+☎️  +45335521
 
 """,
 
 'DRIVER_CAR':"""
-NOTA:
+📢 NOTA ❗️
+
 Los modelos pueden ajustarse en futuras versiones, por el momento disponemos con los modelos estandar para el transporte urbano comun de cuba.
 
->> [+] - Coche_tradicional
->> [+] - Coche_Guaguita
->> [+] - Coche_planchero
->> [+] - Bici_taxi
->> [+] - Moto_taxi
->> [+] - Motorina_taxi
->> [+] - Automobil
->> [+] - Camiones
->> [+] - Camionetas
+ 🐴 - Tradicional
+ 🐴 - Guaguita
+ 🐴 - Planchero
+ 🚲 - Bici_taxi
+ 🛺 - Moto_taxi
+ 🛵 - Motorina_taxi
+ 🚕 - Automobil
+ 🛻 - Camionetas
+ 🚚 - Camiones
 
 Modelos actuales existentes.
 """,
 'DRIVER_VEHICUL':"""
-NOTA:
+📢 NOTA ❗️
+
 Los modelos pueden ajustarse en futuras versiones, por el momento disponemos con los modelos estandar para el transporte urbano comun de cuba.
 
->> [+] - /Coche_tradicional
->> [+] - /Coche_Guaguita
->> [+] - /Coche_planchero
->> [+] - /Bici_taxi
->> [+] - /Moto_taxi
->> [+] - /Motorina_taxi
->> [+] - /Automobil
->> [+] - /Camiones
->> [+] - /Camionetas
+ 🐴 - /Coche_tradicional
+ 🐴 - /Coche_Guaguita
+ 🐴 - /Coche_planchero
+ 🚲 - /Bici_taxi
+ 🛺 - /Moto_taxi
+ 🛵 - /Motorina_taxi
+ 🚕 - /Automobil
+ 🛻 - /Camiones
+ 🚚 - /Camionetas
 
 Modelos actuales existentes.
 """,
 "CLIENT_EXIT_LAS_CONFIG":"""
-NOTA:
+📢 NOTA ❗️
+
 Usted Tiene una cuenta asociada a la App solo se permiten 1 cuenta por Usuarios porfavor en caso de eliminar la cuenta anterior escriba directo al administrador y solicite el cambio o eliminacion de la cuenta existente.
 Solo queda la ultima configuracion:
 
 /cual_es_mi_ruta
 
 Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
-
 """,
 "CLIENT_EXIT":"""
-NOTA:
+📢 NOTA ❗️
+
 Usted Tiene una cuenta asociada a la App solo se permiten 1 cuenta por Usuarios porfavor en caso de eliminar la cuenta anterior escriba directo al administrador y solicite el cambio o eliminacion de la cuenta existente.
 
-Registrado como:\t\tTYPE_USER
-Nombre:\t\tTYPE_NAME
-Movil:\t\tTYPE_NUMBER
-Origen:\t\tTYPE_ORIGIN
-Destino:\t\tTYPE_DESTINY
+📇 TYPE_USER
+👨‍ TYPE_NAME
+📲 TYPE_NUMBER
+↗️ TYPE_ORIGIN Salida
+↘️ TYPE_DESTINY llegada
 
-NOTA:
+📢 NOTA ❗️
 
 Solo queda la ultima configuracion:
 
 /cual_es_mi_ruta
 
 Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
-
 """,
 "CLIENT_REGISTER":"""
+📢 NOTA ❗️
 
-NOTA:
 Usted esta punto de registrarse como un cuenta real, los datos ingresados deben estar correctos ya que al precionar acceptar se registrara toda la informacion y no podra modificar acto seguido de haber acceptado, porfavor lea, revise, y confirme.
 
-Registrado como:\t\tTYPE_USER
-Nombre:\t\tTYPE_NAME
-Movil:\t\tTYPE_NUMBER
+📇 TYPE_USER
+👨‍ TYPE_NAME
+📲 TYPE_NUMBER
 
-NOTA:
+📢 NOTA ❗️
 
 Solo queda la ultima configuracion:
 
 /cual_es_mi_ruta
 
 Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de trabajo para que los usuarios registrados como clientes puedan tener acceso a la ruta de su vehiculo.
-
 """,
 "REGISTER":"""
 
-NOTA:
+📢 NOTA ❗️
+
 Usted esta punto de registrarse como un cuenta real, los datos ingresados deben estar correctos ya que al precionar acceptar se registrara toda la informacion y no podra modificar acto seguido de haber acceptado, porfavor lea, revise, y confirme.
 
-Registrado como:\t\tTYPE_USER
-Nombre:\t\tTYPE_NAME
-Movil:\t\tTYPE_NUMBER
-Modelo de transporte:\t\t/TYPE_CAR
-Capacidad de transporte:\t\tTYPE_CAPACITY Clientes
+📇 TYPE_USER
+👨‍ TYPE_NAME
+📲 TYPE_NUMBER
+🚥 /TYPE_CAR
+🫂 TYPE_CAPACITY Capacidad Clientes
 
-NOTA:
+📢 NOTA ❗️
 
 Solo queda la ultima configuracion:
 
@@ -304,7 +326,8 @@ Para que su cuenta ese al 100 % en Funcional necesitamos que registre su ruta de
 """,
 "SEND_INFO":"""
 
-NOTA:
+📢 NOTA ❗️
+
 Usted necesita definir o establecer su lugar de origen o ruta la cual es un dato fundamental para empesar a usar la App espero que pueda configurar su ruta origen la cual es la misma que viajar localmente
 
 /ruta_origen
