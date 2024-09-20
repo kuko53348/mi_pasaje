@@ -319,6 +319,7 @@ if __name__ == '__main__':
                               'time_creation':'TEXT',
                                'origin_local':'TEXT',
                               'destiny_route':'TEXT',
+                                  'model_car':'TEXT',
                          'transport_capacity':'TEXT', # False True
                             'photo_transport':'TEXT', # False True
                             }
@@ -341,6 +342,7 @@ if __name__ == '__main__':
                               'time_creation':'TEXT',
                                'origin_local':'TEXT',
                               'destiny_route':'TEXT',
+                                  'model_car':'TEXT',
                          'transport_capacity':'TEXT', # False True
                             'photo_transport':'TEXT', # False True
                             }
@@ -363,6 +365,7 @@ if __name__ == '__main__':
                               'time_creation':'TEXT',
                                'origin_local':'TEXT',
                               'destiny_route':'TEXT',
+                                  'model_car':'TEXT',
                          'transport_capacity':'TEXT', # False True
                             'photo_transport':'TEXT', # False True
                             }

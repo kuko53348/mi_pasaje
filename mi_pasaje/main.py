@@ -6,10 +6,10 @@ from core import library_lenguage
 from core import library_sqlite
 
 # bot de original
-bot = telebot.TeleBot(token="7140060249:AAFt5XKfd4NY0U98y_FkaIjTSP75XlVf26U")
+# bot = telebot.TeleBot(token="7140060249:AAFt5XKfd4NY0U98y_FkaIjTSP75XlVf26U")
 
 # bot prueba chat0gpt
-# bot = telebot.TeleBot(token="6481554552:AAFrjGgpIykDhzZLFcr0rGqqUb21xCLKC58")
+bot = telebot.TeleBot(token="6481554552:AAFrjGgpIykDhzZLFcr0rGqqUb21xCLKC58")
 
 # my_token
 ## 2m4xn2jNiqxdWoTpQI6yePycVtL_6QhVhZnn1ykjEVptKTKSD
@@ -22,7 +22,6 @@ bot = telebot.TeleBot(token="7140060249:AAFt5XKfd4NY0U98y_FkaIjTSP75XlVf26U")
 #
 
 client_registered: dict ={}
-emogics = """💼🎟🛵🛺🚕🚌🚚🚥☑️🔚🔙🏁📣🇨🇺🔽"""
 
 data_buttons = {
     'start': [
@@ -70,9 +69,16 @@ data_buttons = {
         '💼 Mi informacion',
         '◀️ Atras',
     ],
+    'modo_conductor':[
+        '💼 Mostrar informacion de mi Ruta', '', '',
+        '↗️ Ruta de salida', '↘️ Ruta de destino', '',
+        '🔄 Viajar en mi ciudad', '', '',
+        '◀️ Atras',
+    ],
 }
 
-#=========================== DATABASE
+#============================================================================================ CHECK DATABASE
+
 def check_data_exist(message,return_just_data: bool=False):
     data_returned = check_user_in_database(message=message)
 
@@ -96,7 +102,12 @@ def check_data_exist(message,return_just_data: bool=False):
                                                         columnName='id_account', # <=== check by id
                                                         name=message
                                                         )
+
+            if not fided_data:
+                return False , "register route"
+
             tmp_returned_driver = fided_data[0]
+
 
             # Return just all real data to check
             if return_just_data:
@@ -121,6 +132,10 @@ def check_data_exist(message,return_just_data: bool=False):
                                                         columnName='id_account', # <=== check by id
                                                         name=message
                                                         )
+
+            if not fided_data:
+                return False , "register route"
+
             tmp_returned_driver = fided_data[0]
 
             # Return just all real data to check
@@ -176,7 +191,8 @@ def update_database(
     # print(f'[+] old {data_old} new {data_to_update}')
     # print('====================')
 
-#=========================== CLIENT
+#============================================================================================ CLIENT
+
 
 def client_number(message):
     tmp_message = message.text
@@ -222,6 +238,7 @@ def client_number(message):
                                                             'False', # time_creation        # False True
                                                             'False', # origin_local         # False True
                                                             'False', # destiny_route        # False True
+                                                            'False', # model transport       # False True
                                                             'False', # transport_capacity   # False True
                                                             'False', # photo_transport      # False True
                                     ))
@@ -239,10 +256,11 @@ def client_number(message):
                                                             'False', # time_creation        # False True
                                                             'False', # origin_local         # False True
                                                             'False', # destiny_route        # False True
+                                                            'False', # model transport       # False True
                                                             'False', # transport_capacity   # False True
                                                             'False', # photo_transport      # False True
                                     ))
-    print('CLIENT: ',client_registered[message.chat.id])
+    # print('CLIENT: ',client_registered[message.chat.id])
 
     del client_registered[message.chat.id]
 
@@ -259,7 +277,8 @@ def client_name(message):
     bot.register_next_step_handler(var_tmp,
                                     client_number)
 
-#=========================== DRIVER
+#============================================================================================ DRIVERS
+
 def driver_capacity(message):
     tmp_message = message.text
     # print(f'show capaticy: {tmp_message}:')
@@ -292,6 +311,7 @@ def driver_capacity(message):
                                                             'False', # time_creation        # False True
                                                             'False', # origin_local         # False True
                                                             'False', # destiny_route        # False True
+                                                tmp_data.get('car'), # model transport       # False True
                                            tmp_data.get('capacity'), # transport_capacity   # False True
                                                             'False', # photo_transport      # False True
                                     ))
@@ -310,11 +330,12 @@ def driver_capacity(message):
                                                             'False', # time_creation        # False True
                                                             'False', # origin_local         # False True
                                                             'False', # destiny_route        # False True
+                                                tmp_data.get('car'), # model transport       # False True
                                            tmp_data.get('capacity'), # transport_capacity   # False True
                                                             'False', # photo_transport      # False True
                                     ))
 
-    print('DRIVER: ',client_registered[message.chat.id])
+    # print('DRIVER: ',client_registered[message.chat.id])
 
     del client_registered[message.chat.id]
 
@@ -354,8 +375,10 @@ def driver_name(message):
     var_tmp = bot.send_message(message.chat.id, message_formated)
     bot.register_next_step_handler(var_tmp,
                                     driver_cars)
+#=====================================================================================================================================================
+#=================================================================== START BOT =======================================================================
+#=====================================================================================================================================================
 
-#=========================== START BOT
 @bot.message_handler(func=lambda message:True)
 def all_messages(message):
     MESSAGE_ID = message.chat.id
@@ -416,25 +439,47 @@ def all_messages(message):
         ''' We create a start button '''
 
         message_formated = check_data_exist(message=MESSAGE_ID,return_just_data=True)
-        if not bool(message_formated[0]):
-            message_formated = library_lenguage.read_header(data='NOTA')
+
+        if not message_formated[1] == 'register route':
+
+            # print(message_formated[1])
+            if not bool(message_formated[0]):
+                message_formated = library_lenguage.read_header(data='NOTA')
+                tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+            else:
+                if message_formated[7] == "False":
+                    message_formated = library_lenguage.read_header(data='SEND_INFO')
+                    tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+                else:
+
+                    # print(message_formated,'xxxxxxxxxxxxxxxxxxxxxxxxxx')
+                    if message_formated[0] == 'Conductor':
+                        tele_bot.tele_buttons(
+                                bot = bot,
+                                message_id=MESSAGE_ID,
+                                key_dict_buttons='modo_conductor',
+                                dict_buttons=data_buttons,
+                                row_number=3,
+                                message=f"Bienvenido al menu de {MESSAGE}",
+                                # resize=True,
+                                # show_keyboard=False,
+                                )
+                    else:
+                        tele_bot.tele_buttons(
+                                bot = bot,
+                                message_id=MESSAGE_ID,
+                                key_dict_buttons='🏁 Viajar ahora 🏁',
+                                dict_buttons=data_buttons,
+                                row_number=3,
+                                message=f"Bienvenido al menu de {MESSAGE}",
+                                # resize=True,
+                                # show_keyboard=False,
+                                )
+        else:
+            message_formated = library_lenguage.read_header(data='CLIENT_EXIT_LAS_CONFIG')
             tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
 
-        else:
-            if message_formated[7] == "False":
-                message_formated = library_lenguage.read_header(data='SEND_INFO')
-                tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
-            else:
-                tele_bot.tele_buttons(
-                        bot = bot,
-                        message_id=MESSAGE_ID,
-                        key_dict_buttons='🏁 Viajar ahora 🏁',
-                        dict_buttons=data_buttons,
-                        row_number=3,
-                        message=f"Bienvenido al menu de {MESSAGE}",
-                        # resize=True,
-                        # show_keyboard=False,
-                        )
     elif '🛞 Registrarse como Conductor' == MESSAGE: # will capture text of press buttons
         ''' We create a start button '''
 
@@ -585,7 +630,95 @@ def all_messages(message):
     elif '/users' == MESSAGE: # will capture text of press buttons
         data_returned = check_user_in_database(message=MESSAGE_ID)
 
-        print(data_returned,'<<<<<<<<<<<<<<<<<<<<<')
+        # print(data_returned,'<<<<<<<<<<<<<<<<<<<<<')
+
+    elif '🐴 Coche Tradicional' == MESSAGE or \
+         '🐴 Coche Guaguita' == MESSAGE or \
+         '🐴 Coche Carretonero' == MESSAGE or \
+         '🚲 Bici Taxi' == MESSAGE or \
+         '🛺 Moto Taxi' == MESSAGE or \
+         '🛵 Motorina' == MESSAGE or \
+         '🚕 Automobil' == MESSAGE or \
+         '🛻 Camionetas' == MESSAGE or \
+         '🚚  Camiones' == MESSAGE or \
+         '💼 Mi informacion' == MESSAGE:
+
+        data_returned = check_user_in_database(message=MESSAGE_ID)
+
+        if data_returned[0]:
+
+            list_data = data_returned[1][0]
+            type_client = list_data[0]
+            id_client = list_data[1]
+
+
+            #FIND CLIENT EXACTLY DESTINY ROUTE
+            connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+            client_finded = mysqlite_db.sqlite_find_by_name(
+                                                        connected=connection_db,
+                                                        tableName='Clients_Users',
+                                                        columnName='id_account',
+                                                        name=id_client
+                                                        )
+
+
+            data_dict_returned = library_lenguage.read_header(data='MODEL_CAR')
+
+            if client_finded:
+                origin_route = client_finded[0][7]
+                destiny_route = client_finded[0][8]
+                model_car = data_dict_returned.get(MESSAGE)
+                # FIND IN DRIVER TABLE EXACTLY CAR TYPE
+                # if destiny is same
+                #
+                connection_db = mysqlite_db.sqlite_connection(namedatabase=os.path.join('mi_pasaje/database','.mi_botella_database.db'))
+                driver_finded = mysqlite_db.sqlite_find_by_name(
+                                                            connected=connection_db,
+                                                            tableName='Drivers_Users',
+                                                            columnName='destiny_route',
+                                                            name=destiny_route,
+                                                            fetch='all',
+                                                            # match=["model_car",model_car], # Uncoment to only apear model car <=======================
+                                                            )
+
+                # print(driver_finded)
+                message_formated: str=""
+
+                if driver_finded:
+
+                    for _ in driver_finded:
+
+                        # if find one existing driver return driver name and phone route
+                        user_name=_[2]
+                        phone_number=_[5]
+                        source_route=_[7]
+                        destiny_route=_[8]
+                        model_car=_[9]
+                        capacity_route=_[10]
+
+                        # DRIVER DATA
+                        # message_formated+=f"{user_name}\n{phone_number}\n{destiny_route}\n{model_car} \n{capacity_route}\n"
+                        tmp_string=library_lenguage.read_header(data='DRIVER_DATA')
+                        tmp_string=tmp_string.replace('USER_NAME',user_name)
+                        tmp_string=tmp_string.replace('USER_PHONE',phone_number)
+                        tmp_string=tmp_string.replace('TRANSPORT',model_car)
+                        tmp_string=tmp_string.replace('CAPACITY',capacity_route)
+                        # message_formated=message_formated.replace('SOURCE',source_route)
+                        message_formated+=tmp_string.replace('DESTINY',destiny_route)
+                        # message_formated+=message_formated.replace()
+
+                    message_formated+="--------------------------------------------------------------------------------------------"
+                    tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+                else:
+                    message_formated = library_lenguage.read_header(data='NO_EXIT_DATABASE')
+                    tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+            else:
+                message_formated = library_lenguage.read_header(data='NO_EXIT_DATABASE')
+                tele_bot.send_message(  bot=bot,type_msg='message',message_id=MESSAGE_ID,message=message_formated)
+
+
+
     else:
         # check_name = all_citys.get(MESSAGE,'known')
 
@@ -737,16 +870,16 @@ if __name__ == '__main__':
     mysqlite_db = library_sqlite.mysqlite_db
 
     list_all_commands = {
-                        'registrarse':'Registrarse como usuario o conductor',
-                        'start':'Lobby de bienvenida a Mi pasaje App',
-                        'unirse_al_grupo':'Grupo creado para compartir ideas',
-                        'califiar_app':'Calificame su opinion de la App',
-                        'donacion':'Puede contruir con la App',
-                        'app_version':'Version de la App Actualmente',
-                        'ayuda':'Principales dudas',
+                        'start':'👟 Comenzar cuenta',
+                        'registrarse':'✍️ Registrar cuenta',
+                        'unirse_al_grupo':'👥 Grupo Mi motella',
+                        'califiar_app':'🤙 Su Calificacion',
+                        'donacion':'💰 Gracias por su aporte',
+                        'app_version':'🔄 Version de la App',
+                        'ayuda':'🆘 Ayuda general',
                         }
     try:
-        MenuCommand(bot,list_all_commands)
+        # MenuCommand(bot,list_all_commands)
         bot.infinity_polling(skip_pending=True)
         # bot.infinity_polling()
     except Exception as e:

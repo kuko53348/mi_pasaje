@@ -15,7 +15,9 @@ message_formated = {
 'Madruga' , 'Guines' , 'Santa_Cruz_Norte' , 'Batabano' , 'Nueva_Paz' , 'Bejucal' , 'Melena_del_Sur' , 'San_Nicolas', 'Corralillo' , 'Encrucijada' , 'Santo_Domingo' , 'Ranchuelo' ,
 'Caibarien' , 'Manicaragua' , 'Cifuentes' , 'Sagua_la_Grande'},
 
-'NOTA':"""📢 NOTA ❗️
+'NOTA':"""
+📢 NOTA ❗️
+
 Usted puede acceder a mi botella de manera gratuita. Solamente pedimos que se registre con el comando siguiente:
 
 ✍️ /registrarse
@@ -222,6 +224,17 @@ Ejemplo:
 ☎️  +45335521
 
 """,
+"MODEL_CAR":{
+'🐴 Coche Tradicional': '/Coche_tradicional',
+'🐴 Coche Guaguita': '/Coche_Guaguita',
+'🐴 Coche Carretonero': '/Coche_planchero',
+'🚲 Bici Taxi': '/Bici_taxi',
+'🛺 Moto Taxi': '/Moto_taxi',
+'🛵 Motorina': '/Motorina_taxi',
+'🚕 Automobil': '/Automobil',
+'🛻 Camionetas': '/Camionetas',
+'🚚  Camiones': '/Camiones',
+},
 
 'DRIVER_CAR':"""
 📢 NOTA ❗️
@@ -334,7 +347,18 @@ Usted necesita definir o establecer su lugar de origen o ruta la cual es un dato
 
 La cual es la ruta que deseamos movernos ya sea localmente en la misma ciudad.
 """,
+"NO_EXIT_DATABASE":"""
 
+📢 NOTA ❗️
+
+Todavia ningun conductor a introducido el destino de viaje que usted desea hacer, puede buscar lugares cercanos para obtener mas alternativas.
+
+A medida que se espanda la App se uniran mas conductores y estaran disponibles desde diferentes lugares del pais.
+""",
+"DRIVER_DATA":"""
+--------------------------------------------------------------------------------------------
+👤 'USER_NAME '   🏁 /DESTINY
+📞 USER_PHONE           🚕 TRANSPORT           🗃 Capacidad: CAPACITY """,
 }
 
 def read_header(data):
