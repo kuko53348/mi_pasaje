@@ -356,9 +356,32 @@ Todavia ningun conductor a introducido el destino de viaje que usted desea hacer
 A medida que se espanda la App se uniran mas conductores y estaran disponibles desde diferentes lugares del pais.
 """,
 "DRIVER_DATA":"""
---------------------------------------------------------------------------------------------
-👤 'USER_NAME '   🏁 /DESTINY
-📞 USER_PHONE           🚕 TRANSPORT           🗃 Capacidad: CAPACITY """,
+------ 🚕 TRANSPORT
+📞 USER_PHONE
+👤 USER_NAME
+📍 /DESTINY
+🗃 Capacidad: CAPACITY
+""",
+'CANCEL_REGISTER':"""
+📢 Ooooops ❗️
+
+Usted esta cancelando el registro verifique bien cuando este escribiendo, ingrese correctamente los datos pedidos para que no tenga que cancelar innecesariamente su registro.
+
+✍️ /registrarse
+
+Puede volver a intentarlo presionando registrarse o volver atras presionando dos veces Cancelar registro
+
+""",
+'ABOUT':"""
+📢 NOTA ❗️
+
+ Mi Botella es su asistente de transporte preferido en Cuba, diseñado para simplificar su experiencia de viaje. Con solo unos pocos toques, puede acceder fácilmente a una lista de conductores disponibles en su área, lo que garantiza una forma sencilla de obtener un viaje. Ya sea que necesite un viaje rápido o un viaje más largo, My Botella lo conecta con conductores confiables, lo que hace que el transporte en Cuba sea más fácil que nunca. ¡Despídete del estrés de encontrar un viaje y deja que My Botella se encargue de la logística por ti!
+
+Usted puede contactarme por:
+
+email: kuko53348@gmail.com
+telegram: https://t.me/Bodyasshole
+""",
 }
 
 def read_header(data):
