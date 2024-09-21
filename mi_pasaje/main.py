@@ -841,7 +841,7 @@ if __name__ == '__main__':
     mysqlite_db = library_sqlite.mysqlite_db
 
     list_all_commands = {
-                        'bot_mi_botella':'Informacion del bot',
+                        'bot_mi_botella':'ℹ️ Informacion del bot',
                         'start':'👟 Comenzar cuenta',
                         'registrarse':'✍️ Registrar cuenta',
                         'unirse_al_grupo':'👥 Grupo Mi motella',

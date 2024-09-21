@@ -30,7 +30,8 @@ Telegram:
 👤 @Bodyasshole
 
 Despues de confirmar sus datos, seran agregado en la base de datos, totalmente GRATIS.
-Este BOT esta en fase BETA en un futuro se modificara las politicas de administracion.""",
+
+El BOT esta en fase BETA [prueba] en un futuro se modificara las politicas de administracion.""",
 
 'GROUP':"""Used puede compartir sus ideas y sugerencias en Nuestro grupo su grupo
 
@@ -379,8 +380,8 @@ Puede volver a intentarlo presionando registrarse o volver atras presionando dos
 
 Usted puede contactarme por:
 
-email: kuko53348@gmail.com
-telegram: https://t.me/Bodyasshole
+📥 kuko53348@gmail.com
+👉 <a href="https://t.me/Bodyasshole">TELEGRAM</a> 👈""",
 """,
 }
 
