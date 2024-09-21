@@ -382,7 +382,6 @@ Usted puede contactarme por:
 
 📥 kuko53348@gmail.com
 👉 <a href="https://t.me/Bodyasshole">TELEGRAM</a> 👈""",
-""",
 }
 
 def read_header(data):
